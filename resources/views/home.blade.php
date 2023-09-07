@@ -82,8 +82,53 @@
             </div>
         </div>
     </div>
+   
+           
 </section>
 <!-- ***** About Area Ends ***** -->
+
+<section >
+    <div class="container">
+        <div class="col-lg-6">
+            <div class="contact-form">
+                <div id="contact">
+                    <div class="row">
+                       <h4>Service Information</h4>
+                         <div id=contact-row-container>
+                           <div id=contact-row>
+                             <p>Wifi</p>
+                             <img src="assets/images/wifi.jpg" >
+                           </div>
+                           <div id=contact-row>
+                             <p>Alchohol</p>
+                             <img src="assets/images/alchohol.jpg" >
+                           </div>
+                           <div id=contact-row>
+                            <p>Pets</p>
+                            <img src="assets/images/no_pets.jpg" >
+                          </div>
+                          <div id=contact-row>
+                            <p>Parking</p>
+                            <img src="assets/images/vallet.png" >
+                          </div>
+                          <div id=contact-row>
+                            <p>Visa</p>
+                            <img src="assets/images/visa.png" >
+                          </div>
+                          <div id=contact-row>
+                            <p>Smoking</p>
+                            <img src="assets/images/no_smoking.png" >
+                          </div>
+                          <div id=contact-row>
+                           <p>AC</p>
+                           <img src="assets/images/AC.png" >
+                         </div>
+                      </div>
+                      
+                </div>
+    </div>
+           
+</section>
 
 <!-- ***** Menu Area Starts ***** -->
 <section class="section" id="menu">
@@ -252,7 +297,7 @@
                     <div class="section-heading">
                         <h6>Contact Us</h6>
                         <h2>Here You Can Make A Reservation Or Just walkin to our cafe</h2>
-                        <h6>Price Range:</h6>
+                      
                         <br><!--i included this-->
                     </div>
                     <div class="row">
@@ -295,21 +340,21 @@
                                   </div>
                                   <div id=contact-row>
                                     <p>Parking</p>
-                                    <img src="assets/images/vallet.jpg" >
+                                    <img src="assets/images/vallet.png" >
                                   </div>
                               </div>
                               <div id=contact-row-container>
                                 <div id=contact-row>
-                                  <p>Wifi</p>
-                                  <img src="assets/images/visa.jpg" >
+                                  <p>Visa</p>
+                                  <img src="assets/images/visa.png" >
                                 </div>
                                 <div id=contact-row>
-                                  <p>Alchohol</p>
-                                  <img src="assets/images/thai_Cuisine.jpg" >
+                                  <p>Smoking</p>
+                                  <img src="assets/images/no_smoking.png" >
                                 </div>
                                 <div id=contact-row>
-                                 <p>Wifi</p>
-                                 <img src="assets/images/thai_Cuisine.jpg" >
+                                 <p>AC</p>
+                                 <img src="assets/images/AC.png" >
                                </div>
                                <div id=contact-row>
                                  <p>Alchohol</p>
