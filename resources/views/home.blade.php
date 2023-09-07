@@ -252,20 +252,20 @@
                     <div class="section-heading">
                         <h6>Contact Us</h6>
                         <h2>Here You Can Make A Reservation Or Just walkin to our cafe</h2>
-                        <h6>Opening Hours: 12.00pm - 11.30pm daily</h6>
+                        <h6>Price Range:</h6>
                         <br><!--i included this-->
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="phone">
-                                <i class="fa fa-phone"></i>
+                                <i class="fas fa-clock"></i>
                                 <h4>Opening Hours</h4>
                                 <span>Daily: 12.00pm - 11.30pm</span>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="message">
-                                <i class="fa fa-envelope"></i>
+                                <i class="fa fa-phone"></i>
                                 <h4>Contact Number</h4>
                                 <span>+94 007 738 1234</span>
                             </div>
