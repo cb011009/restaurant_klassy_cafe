@@ -1100,6 +1100,7 @@ chefs
   width: 100%;
   overflow: hidden;
   position: relative;
+  
 }
 
 #chefs .chef-item .thumb .overlay {
@@ -1126,6 +1127,7 @@ chefs
   transition: all .5s;
   opacity: 0;
   visibility: hidden;
+
 }
 
 #chefs .chef-item .thumb ul.social-icons li {
@@ -1261,7 +1263,7 @@ reservation
 #contact {
   margin-left: 30px;
   padding: 45px 30px;
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 5px;
 }
 
@@ -1272,6 +1274,40 @@ reservation
   color: #2a2a2a;
   margin-bottom: 30px;
 }
+
+/*i Added*/
+#contact p {
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  color: #2a2a2a;
+  margin-bottom: 5px;
+}
+
+#contact-row{
+  text-align: center;
+  color: #2a2a2a;
+  margin-left:45px;
+  margin-top:20px;
+  margin-bottom:20px;
+ 
+ 
+ 
+}
+
+#contact img {
+  
+  height:35px;
+  width:40px;
+  border-radius: 10px;
+  
+}
+
+#contact-row-container{
+  display: flex;
+}
+
+/* I added*/
 
 .datepicker-days {
   padding: 30px;
@@ -1373,10 +1409,13 @@ offers
 
 #offers #tabs ul {
   padding: 0;
+  
+ 
 }
 #offers #tabs ul li {
   display: inline-block;
   margin: 0px 15px;
+  
 }
 #offers #tabs ul li:last-child {
   margin-right: 0px;
