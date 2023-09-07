@@ -62,7 +62,7 @@ https://templatemo.com/tm-558-klassy-cafe
                            
                                 <li class="scroll-to-section"><a href="#menu">Menu</a></li>
                                 <li class="scroll-to-section"><a href="#chefs">Cuisines</a></li> 
-                                <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li> 
+                                <li class="scroll-to-section"><a href="#services">Contact Us</a></li> 
                                 @guest
                                 @if (Route::has('login'))
                                     <li >
@@ -77,7 +77,7 @@ https://templatemo.com/tm-558-klassy-cafe
                                 @endif
                             @else
                                 <li >
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    <a href="#" role="button"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }}
                                     </a>
@@ -134,7 +134,7 @@ https://templatemo.com/tm-558-klassy-cafe
                     <div class="left-text-content">
                         <p>© Copyright Klassy Cafe Co.
                         
-                        <br>Design: TemplateMo</p>
+                       
                     </div>
                 </div>
             </div>
