@@ -1275,7 +1275,7 @@ reservation
   margin-bottom: 30px;
 }
 
-/*i Added*/
+
 #contact p {
   text-align: center;
   font-weight: 700;
@@ -1297,8 +1297,8 @@ reservation
 
 #contact img {
   
-  height:35px;
-  width:40px;
+  height:46px;
+  width:45px;
   border-radius: 10px;
   
 }
@@ -1307,7 +1307,6 @@ reservation
   display: flex;
 }
 
-/* I added*/
 
 .datepicker-days {
   padding: 30px;
