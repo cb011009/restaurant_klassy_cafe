@@ -56,9 +56,9 @@
                 <div class="left-text-content">
                     <div class="section-heading">
                         <h6>About Us</h6>
-                        <h2>We Leave A Delicious Memory For You</h2>
+                        <h2>Your Culinary Journey, Your Way</h2>
                     </div>
-                    <p>Discover the fusion of Japanese, Thai, and Korean flavors at [Hotel Name] Restaurant <br>Japan's artistry shines through sushi and sashimi, while Thailand's bold aromas infuse dishes like Pad Thai and Green Curry. Dive into an interactive Korean BBQ experience, sizzling meats and fresh veggies to perfection.</p>
+                    <p>Welcome to Klassy Cafe! We're delighted to offer you the opportunity to share your unique dining preferences in advance. By doing so, you'll help us create a tailored dining experience just for you.  <br><br>Your input allows us to prepare and cater to your diverse tastes, ensuring you have the best possible meal with us.</p>
                     <div class="row">
                         <div class="col-4">
                             <img src="assets/images/about-thumb-01.jpg" alt="">
@@ -87,49 +87,6 @@
 </section>
 <!-- ***** About Area Ends ***** -->
 
-<section >
-    <div class="container">
-        
-            <div id=serviceInfoContainer>
-                <div id="serviceInfo">
-                    <div class="serviceInfoIcons">
-                        <p>Wifi</p>
-                        <img src="assets/images/wifi.jpg" >
-                    </div>
-                    <div class="serviceInfoIcons">
-                        <p>Alchohol</p>
-                        <img src="assets/images/alchohol.jpg" >
-                      </div>
-                      <div class="serviceInfoIcons">
-                       <p>No Pets</p>
-                       <img src="assets/images/no_pets.jpg" >
-                     </div>
-                     <div class="serviceInfoIcons">
-                       <p>Parking</p>
-                       <img src="assets/images/vallet.png" >
-                     </div>
-                </div>
-                <div id="serviceInfo">
-                    <div class="serviceInfoIcons">
-                        <p>Visa</p>
-                        <img src="assets/images/visa.png" >
-                      </div>
-                      <div class="serviceInfoIcons">
-                        <p>No Smoking</p>
-                        <img src="assets/images/no_smoking.png" >
-                      </div>
-                      <div class="serviceInfoIcons">
-                       <p>AC</p>
-                       <img src="assets/images/AC.png" >
-                     </div>
-                </div>
-            </div>
-
-                      
-        
-    </div>
-           
-</section>
 
 <!-- ***** Menu Area Starts ***** -->
 <section class="section" id="menu">
@@ -138,7 +95,7 @@
             <div class="col-lg-4">
                 <div class="section-heading">
                     <h6>Our Menu</h6>
-                    <h2>Our selection of cakes with quality taste</h2>
+                    <h2>A Selection Of Our Signature Dishes</h2>
                 </div>
             </div>
         </div>
@@ -290,91 +247,12 @@
 <!-- ***** Chefs Area Ends ***** -->
 
 <!-- ***** Reservation Us Area Starts ***** -->
-<section class="section" id="reservation">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 align-self-center">
-                <div class="left-text-content">
-                    <div class="section-heading">
-                        <h6>Contact Us</h6>
-                        <h2>Here You Can Make A Reservation Or Just walkin to our cafe</h2>
-                      
-                        <br><!--i included this-->
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="phone">
-                                <i class="fas fa-clock"></i>
-                                <h4>Opening Hours</h4>
-                                <span>Daily: 12.00pm - 11.30pm</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="message">
-                                <i class="fa fa-phone"></i>
-                                <h4>Contact Number</h4>
-                                <span>+94 007 738 1234</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-             <div class="col-lg-6">
-                    <div class="contact-form">
-                        <div id="contact">
-                            <div class="row">
-                              <div class="col-lg-12">
-                                <h4>Service Information</h4>
-                            </div>
-                                <div id=contact-row-container>
-                                   <div id=contact-row>
-                                     <p>Wifi</p>
-                                     <img src="assets/images/wifi.jpg" >
-                                   </div>
-                                   <div id=contact-row>
-                                     <p>Alchohol</p>
-                                     <img src="assets/images/alchohol.jpg" >
-                                   </div>
-                                   <div id=contact-row>
-                                    <p>Pets</p>
-                                    <img src="assets/images/no_pets.jpg" >
-                                  </div>
-                                  <div id=contact-row>
-                                    <p>Parking</p>
-                                    <img src="assets/images/vallet.png" >
-                                  </div>
-                              </div>
-                              <div id=contact-row-container>
-                                <div id=contact-row>
-                                  <p>Visa</p>
-                                  <img src="assets/images/visa.png" >
-                                </div>
-                                <div id=contact-row>
-                                  <p>Smoking</p>
-                                  <img src="assets/images/no_smoking.png" >
-                                </div>
-                                <div id=contact-row>
-                                 <p>AC</p>
-                                 <img src="assets/images/AC.png" >
-                               </div>
-                               <div id=contact-row>
-                                 <p>Alchohol</p>
-                                 <img src="assets/images/thai_Cuisine.jpg" >
-                               </div>
-                           </div>
 
-                        </div>
-                       
-        
-        </div>
-    </div>
-     
-</section>
 <!--- ***** Reservation Area Ends ***** -->
 
 <!-- ***** Menu Area Starts ***** -->
 <section class="section" id="offers">
-    <div class="container">
+    <!--<div class="container">
         <div class="row">
             <div class="col-lg-4 offset-lg-4 text-center">
                 <div class="section-heading">
@@ -634,7 +512,97 @@
                 </div>
             </div>
         </div>
+    </div>-->
+</section>
+
+
+<section >
+    <div class="container">
+        <div id="ServicesCon">
+            <div class="col-lg-4 offset-lg-4 text-center">
+                <div class="section-heading">
+                    <h6>Service Information</h6>
+                   <!-- <h2>Service Information</h2>-->
+                </div>
+            </div>
+                <div id=serviceInfoContainer>
+                   
+                    <div id="serviceInfo">
+                        <div class="serviceInfoIcons">
+                            <p>Parking</p>
+                            <img src="assets/images/vallet.png" >
+                          </div>
+                        <div class="serviceInfoIcons">
+                            <p>Bar</p>
+                            <img src="assets/images/alchohol.jpg" >
+                          </div>
+                          <div class="serviceInfoIcons">
+                            <p>Toddler Chair</p>
+                            <img src="assets/images/AC.png" >
+                          </div>
+                          <div class="serviceInfoIcons">
+                            <p>AC</p>
+                            <img src="assets/images/AC.png" >
+                          </div>
+                        
+                        
+                       
+                         
+                        
+                    </div>
+                    <div id="serviceInfo">
+                        <div class="serviceInfoIcons">
+                            <p>Wifi</p>
+                            <img src="assets/images/wifi.jpg" >
+                        </div>
+                        <div class="serviceInfoIcons">
+                            <p>Visa</p>
+                            <img src="assets/images/visa.png" >
+                          </div>
+                         <div class="serviceInfoIcons">
+                            <p>No Smoking</p>
+                            <img src="assets/images/no_smoking.png" >
+                          </div>
+                          <div class="serviceInfoIcons">
+                            <p>No Pets</p>
+                            <img src="assets/images/no_pets.jpg" >
+                          </div>
+                    </div>
+                </div>
+               
+                <div id=contact_row2>
+                    <div class="contact">
+                        <i class="fas fa-clock"></i>
+                        <h4>Opening Hours</h4>
+                        <span>Daily: 12.00pm - 11.30pm</span>
+                    </div>
+               
+                    <div class="contact">
+                        <i class="fa fa-phone"></i>
+                        <h4>Hotline</h4>
+                        <span>+94 007 738 1234</span>
+                    </div>
+             
+                    <div class="contact">
+                        <i class="fas fa-rupee-sign"></i>
+                        <h4>Price Range</h4>
+                        <span>LKR 5000-15,000 for 2 Pax</span>
+                    </div>
+                </div>
+                
+                            
+                               
+                                    
+                                    
+                                            
+                                    
+                                       
+              
+        </div>
+        
+
     </div>
+           
 </section>
 <!-- ***** Chefs Area Ends ***** --> 
 @endsection

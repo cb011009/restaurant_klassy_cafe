@@ -1215,16 +1215,34 @@ reservation
   background-size: cover;
 }
 
+#contact_row2{
+  margin:30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap:20px;
+  margin-top:70px;
+}
+
 #reservation .phone,
-#reservation .message {
+#reservation .message,
+.contact {
   background-color: #fff;
   border-radius: 5px;
   text-align: center;
   padding: 0px 0px 20px 0px;
 }
 
+.contact{
+  box-shadow: 5px 5px 10px rgba(2, 2, 59, 0.2);
+  width:250px;
+  margin-top: 23px;;
+}
+
 #reservation .phone i,
-#reservation .message i {
+#reservation .message i,
+.contact i{
   width: 70px;
   height: 70px;
   display: inline-block;
@@ -1241,12 +1259,15 @@ reservation
 }
 
 #reservation .phone h4,
-#reservation .message h4 {
+#reservation .message h4,
+.contact h4 {
   font-size: 20px;
   font-weight: 700;
   margin-top: 15px;
   margin-bottom: 10px;
 }
+
+
 
 #reservation .phone span a,
 #reservation .message span a {
@@ -1265,6 +1286,13 @@ reservation
   padding: 45px 30px;
   background-color: #ffffff;
   border-radius: 5px;
+  
+}
+
+#ServicesCon{
+  margin-top:80px;
+  
+  
 }
 
 #serviceInfoContainer{
@@ -1278,27 +1306,29 @@ reservation
 
 #serviceInfo {
  
-  margin-top:20px;
+  margin-top:25px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   display: flex; 
+  gap:10px;
  
 }
 
 .serviceInfoIcons{
  text-align: center;
  font-weight: 700;
-  font-size: 20px;
+ font-size: 20px;
   color: #2a2a2a;
   width:100px;
+  justify-content: space-between;
  
 }
 
 .serviceInfoIcons img{
-  height:45.5px;
-  width:45px;
-  border-radius: 10px;
+  height:46.5px;
+  width:45.5px;
+  border-radius: 15px;
   justify-content: center;
 }
 
