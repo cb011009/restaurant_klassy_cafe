@@ -89,43 +89,44 @@
 
 <section >
     <div class="container">
-        <div class="col-lg-6">
-            <div class="contact-form">
-                <div id="contact">
-                    <div class="row">
-                       <h4>Service Information</h4>
-                         <div id=contact-row-container>
-                           <div id=contact-row>
-                             <p>Wifi</p>
-                             <img src="assets/images/wifi.jpg" >
-                           </div>
-                           <div id=contact-row>
-                             <p>Alchohol</p>
-                             <img src="assets/images/alchohol.jpg" >
-                           </div>
-                           <div id=contact-row>
-                            <p>Pets</p>
-                            <img src="assets/images/no_pets.jpg" >
-                          </div>
-                          <div id=contact-row>
-                            <p>Parking</p>
-                            <img src="assets/images/vallet.png" >
-                          </div>
-                          <div id=contact-row>
-                            <p>Visa</p>
-                            <img src="assets/images/visa.png" >
-                          </div>
-                          <div id=contact-row>
-                            <p>Smoking</p>
-                            <img src="assets/images/no_smoking.png" >
-                          </div>
-                          <div id=contact-row>
-                           <p>AC</p>
-                           <img src="assets/images/AC.png" >
-                         </div>
+        
+            <div id=serviceInfoContainer>
+                <div id="serviceInfo">
+                    <div class="serviceInfoIcons">
+                        <p>Wifi</p>
+                        <img src="assets/images/wifi.jpg" >
+                    </div>
+                    <div class="serviceInfoIcons">
+                        <p>Alchohol</p>
+                        <img src="assets/images/alchohol.jpg" >
                       </div>
-                      
+                      <div class="serviceInfoIcons">
+                       <p>No Pets</p>
+                       <img src="assets/images/no_pets.jpg" >
+                     </div>
+                     <div class="serviceInfoIcons">
+                       <p>Parking</p>
+                       <img src="assets/images/vallet.png" >
+                     </div>
                 </div>
+                <div id="serviceInfo">
+                    <div class="serviceInfoIcons">
+                        <p>Visa</p>
+                        <img src="assets/images/visa.png" >
+                      </div>
+                      <div class="serviceInfoIcons">
+                        <p>No Smoking</p>
+                        <img src="assets/images/no_smoking.png" >
+                      </div>
+                      <div class="serviceInfoIcons">
+                       <p>AC</p>
+                       <img src="assets/images/AC.png" >
+                     </div>
+                </div>
+            </div>
+
+                      
+        
     </div>
            
 </section>
@@ -408,7 +409,7 @@
                                                 <div class="col-lg-12">
                                                     <div class="tab-item">
                                                         <img src="assets/images/tab-item-01.png" alt="">
-                                                        <h4>Fresh Chicken Salad</h4>
+                                                        <h4>Chiken Katsudon</h4>
                                                         <p>Lorem ipsum dolor sit amet, consectetur koit adipiscing elit, sed do.</p>
                                                         <div class="price">
                                                             <h6>$10.50</h6>
