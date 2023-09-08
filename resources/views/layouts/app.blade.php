@@ -50,13 +50,13 @@ https://templatemo.com/tm-558-klassy-cafe
                     <div class="col-12">
                         <nav class="main-nav">
                             <!-- ***** Logo Start ***** -->
-                            <a href="index.html" class="logo">
+                            <a href="/" class="logo">
                                 <img src="{{asset('assets/images/klassy-logo.png')}}" align="klassy cafe html template">
                             </a>
                             <!-- ***** Logo End ***** -->
                             <!-- ***** Menu Start ***** -->
                             <ul class="nav">
-                                <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                                <li class="scroll-to-section"><a href="/" class="active">Home</a></li>
                                 <li class="scroll-to-section"><a href="#about">About</a></li>
                                    
                            
