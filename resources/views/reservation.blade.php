@@ -58,6 +58,7 @@
                                         <option value="Lunch - 12:30 PM">Lunch - 12:30 PM</option>
                                         <option value="Lunch - 1:00 PM">Lunch - 1:00 PM</option>
                                         <option value="Lunch - 1:30 PM">Lunch - 1:30 PM</option>
+                                        <option value="Lunch - 1:00 PM">Lunch - 2:00 PM</option>
                                         <option value="Lunch - 2:00 PM">Lunch - 2:30 PM</option>
                                         <option value="Dinner - 7:00 PM">Dinner - 7:00 PM</option>
                                         <option value="Dinner - 7:30 PM">Dinner - 7:30 PM</option>

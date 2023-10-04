@@ -27,6 +27,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/reservation', [App\Http\Controllers\UserController::class, 'reservation'])->name('reservation');*/
 Route::get('/reservation', [App\Http\Controllers\ReservationController::class, 'reservation'])->name('reservation');
 Route::post('/reservation', [App\Http\Controllers\ReservationController::class, 'storeReservation'])->name('reservation_store');
+Route::get('/waiter_panel', [App\Http\Controllers\WaiterController::class, 'waiter_reservation_list'])->name('waiter_panel');
+Route::post('/waiter_panel', [App\Http\Controllers\WaiterController::class, 'filterReservations'])->name('waiter_filter');
+
 
 
 
