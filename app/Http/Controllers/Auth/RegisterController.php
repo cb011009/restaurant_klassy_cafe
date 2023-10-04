@@ -65,7 +65,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    /*protected function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
@@ -75,5 +75,18 @@ class RegisterController extends Controller
             'phone_number' => $data['phone_number'],
             'address' => $data['address'],
         ]);
+    }*/
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'date_of_birth' => $data['date_of_birth'],
+            'phone_number' => $data['phone_number'],
+            'address' => $data['address'],
+            'user_role' => 'user', // Set the default role for new users
+        ]);
     }
+    
 }

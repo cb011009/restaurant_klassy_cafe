@@ -23,9 +23,31 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/reservation', function () {
+/*Route::get('/reservation', function () {
     return view('reservation');
 })->name('reservation');
+
+Route::get('/admin_panel', function () {
+    return view('admin_panel');
+})->name('admin_panel');*/
+
+// User Reservation Route
+Route::get('/reservation', [App\Http\Controllers\UserController::class, 'reservation'])->name('reservation');
+
+// Admin Dashboard Route
+Route::get('/admin_panel', [App\Http\Controllers\AdminController::class, 'manageUsers'])->name('admin_panel');
+
+//newly added
+
+// Edit User
+Route::get('/admin_edit_user/{id}', [App\Http\Controllers\AdminController::class, 'editUser'])->name('admin_edit_user');
+
+// Update User (PUT request)
+Route::put('/admin_update_user/{id}', [App\Http\Controllers\AdminController::class, 'updateUser'])->name('admin_update_user');
+
+// Delete User (DELETE request)
+Route::delete('/admin_delete_user/{id}', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('admin_delete_user');
+
 
 
 Route::get('/email/verify', function () {

@@ -10,21 +10,21 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
+    {
+        //public function up()
 {
     Schema::table('users', function (Blueprint $table) {
-        $table->date('date_of_birth')->nullable();
-        $table->string('phone_number')->nullable();
-        $table->string('address')->nullable();
+        $table->string('user_role')->default('user'); // Default role is 'user'
     });
 }
+
+    }
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        //
     }
 };
