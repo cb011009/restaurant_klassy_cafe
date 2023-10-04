@@ -12,8 +12,7 @@ class WaiterController extends Controller
 {
     public function waiter_panel()
     {
-      /*return view('waiter_panel');*/
-      $reservations = []; // Initialize an empty array or set it to null
+      $reservations = []; 
        $currentDate = now()->toDateString();
 
       return view('waiter_panel', compact('reservations', 'currentDate'));
@@ -21,10 +20,10 @@ class WaiterController extends Controller
     
     public function waiter_reservation_list()
     {
-        // Get the current date
+      
         $currentDate = now()->toDateString();
 
-        // Fetch all reservations for the current date
+        
         $reservations = Reservation::where('date', $currentDate)->get();
 
         return view('waiter_panel', compact('reservations', 'currentDate'));
@@ -35,7 +34,7 @@ class WaiterController extends Controller
         $currentDate = now()->toDateString();
         $timeSlot = $request->input('time_slot');
 
-        // Fetch reservations for the current date and selected time slot
+       
         $reservations = Reservation::where('date', $currentDate)
             ->where('time_slot', $timeSlot)
             ->get();

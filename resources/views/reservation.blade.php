@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <!-- ***** Reservation Us Area Starts ***** -->
 <section class="section" id="reservation">
@@ -98,6 +103,29 @@
             </div>
         </div>
     </div>
+
+   
 </section>
+
+@if(isset($userReservation)) <!-- Check if $userReservation is set -->
+<div class="container">
+    <h2>Reservation Details</h2>
+    <p>Your reservation has been successfully booked!</p>
+
+    <h3>Reservation Information</h3>
+    <ul>
+        <li>Reservation ID: {{ $userReservation->id }}</li>
+        <li>Date: {{ $userReservation->date }}</li>
+        <li>Time Slot: {{ $userReservation->time_slot }}</li>
+        <li>Number of Guests: {{ $userReservation->number_of_guests }}</li>
+        <!--<li>Table Number: {{ $userReservation->table->table_number }}</li>-->
+        <!-- Add other reservation details as needed -->
+    </ul>
+
+    <!-- You can provide links or buttons for the user to go back or perform other actions -->
+</div>
+@endif
+
+
 
 @endsection
