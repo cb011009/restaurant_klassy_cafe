@@ -23,19 +23,22 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-/*Route::get('/reservation', function () {
-    return view('reservation');
-})->name('reservation');
+/* User Reservation Route
+Route::get('/reservation', [App\Http\Controllers\UserController::class, 'reservation'])->name('reservation');*/
+Route::get('/reservation', [App\Http\Controllers\ReservationController::class, 'reservation'])->name('reservation');
+Route::post('/reservation', [App\Http\Controllers\ReservationController::class, 'storeReservation'])->name('reservation_store');
 
-Route::get('/admin_panel', function () {
-    return view('admin_panel');
-})->name('admin_panel');*/
 
-// User Reservation Route
-Route::get('/reservation', [App\Http\Controllers\UserController::class, 'reservation'])->name('reservation');
 
 // Admin Dashboard Route
 Route::get('/admin_panel', [App\Http\Controllers\AdminController::class, 'manageUsers'])->name('admin_panel');
+
+//newly added for staff roles
+
+Route::get('/waiter_panel', [App\Http\Controllers\WaiterController::class, 'waiter_panel'])->name('waiter_panel');
+Route::get('/chef_panel', [App\Http\Controllers\ChefController::class, 'chef_panel'])->name('chef_panel');
+
+
 
 //newly added
 

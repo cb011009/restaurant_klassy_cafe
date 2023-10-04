@@ -31,15 +31,28 @@ class LoginController extends Controller
      * @var string
      */
     /*protected $redirectTo = RouteServiceProvider::HOME;*/
-   /* protected $redirectTo = 'reservation';*/
+   
    
 
-   protected function authenticated(Request $request, $user)
+   /*protected function authenticated(Request $request, $user)
    {
        if ($user->user_role === 'admin') {
            return redirect()->route('admin_panel'); // Replace 'admin.dashboard' with your admin panel route name
        } else {
            return redirect()->route('reservation'); // Replace 'user.reservation' with your user route name
+       }
+   }*/
+
+   protected function authenticated(Request $request, $user)
+   {
+       if ($user->user_role === 'admin') {
+           return redirect()->route('admin_panel'); // Redirect admin to admin dashboard
+       } elseif ($user->user_role === 'waiter') {
+           return redirect()->route('waiter_panel'); // Redirect waiter to waiter dashboard
+       } elseif ($user->user_role === 'chef') {
+           return redirect()->route('chef_panel'); // Redirect chef to chef dashboard
+       } else {
+           return redirect()->route('reservation'); // Redirect customers to reservation page
        }
    }
 
