@@ -1,10 +1,14 @@
 
 @extends('layouts.app')
+
+
+@section('content')
+<br>
 <br>
 <br>
 <br>
 
-@section('content')
+
 <div class="container">
     <h1>Create Order</h1>
 
@@ -88,5 +92,35 @@
         });
     });
 </script>
+
+
+<div class="container">
+   <br>
+   <br>
+    <!-- Section to display orders for the current reservation -->
+    <h2>Orders for Reservation #{{ $reservation->id }}</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product Code</th>
+                <th>Quantity</th>
+                <th>Allergies (optional)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($reservation->orders as $order)
+                <tr>
+                    <td>{{ $order->product_code }}</td>
+                    <td>{{ $order->quantity }}</td>
+                    <td>{{ $order->allergies ?? 'N/A' }}</td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="3">No orders for this reservation.</td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
+</div>
 @endsection
 

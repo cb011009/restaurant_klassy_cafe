@@ -177,6 +177,9 @@ public function createOrder($id)
     $products = Product::all();
 
     return view('create_order', compact('reservation', 'products'));
+
+
+    
 }
 
 
