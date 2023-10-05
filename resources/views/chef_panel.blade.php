@@ -2,6 +2,11 @@
 @extends('layouts.app')
 
 @section('content')
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="container">
     <h1>Chef's Dashboard</h1>
     <table class="table">
