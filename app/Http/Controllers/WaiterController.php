@@ -179,12 +179,50 @@ public function createOrder($id)
     return view('create_order', compact('reservation', 'products'));
 }
 
-public function storeOrder(Request $request,$id)
+
+public function storeOrder(Request $request, $id)
 {
     // Validate the form data
     $request->validate([
         'waiter_id' => 'required|integer',
-        /*'reservation_id' => 'required|integer',*/
+        'product_codes' => 'required|array',
+        'product_codes.*' => 'required|string',
+        'quantities' => 'required|array',
+        'quantities.*' => 'required|integer',
+        'allergies' => 'nullable|array',
+        'allergies.*' => 'nullable|string',
+    ]);
+
+    // Find the reservation by ID
+    $reservation = Reservation::find($id);
+
+    // Check if the reservation exists
+    if (!$reservation) {
+        return redirect()->route('waiter_panel')->with('error', 'Reservation not found.');
+    }
+
+    // Loop through the submitted items and create orders
+    $itemsCount = count($request->input('product_codes'));
+    for ($i = 0; $i < $itemsCount; $i++) {
+        Order::create([
+            'waiter_id' => $request->input('waiter_id'),
+            'reservation_id' => $id,
+            'product_code' => $request->input('product_codes')[$i],
+            'quantity' => $request->input('quantities')[$i],
+            'allergies' => $request->input('allergies')[$i] ?? null,
+        ]);
+    }
+
+    // Redirect back to the waiter dashboard with a success message
+    return redirect()->route('waiter_panel')->with('success', 'Order created successfully.');
+}
+
+/*public function storeOrder(Request $request,$id)
+{
+    // Validate the form data
+    $request->validate([
+        'waiter_id' => 'required|integer',
+      
         'product_codes' => 'required|string',
         'quantities' => 'required|integer',
         'allergies' => 'nullable|string',
@@ -198,7 +236,7 @@ public function storeOrder(Request $request,$id)
         'product_code' => $request->input('product_code'),
         'quantity' => $request->input('quantity'),
         'allergies' => $request->input('allergies'),
-    ]);*/
+    ]);
 
     $productCodes = $request->input('product_codes');
     $quantities = $request->input('quantities');
@@ -216,7 +254,7 @@ public function storeOrder(Request $request,$id)
     // Redirect back to the waiter dashboard with a success message
     return redirect()->route('waiter_panel')->with('success', 'Order created successfully.');
 }
-
+*/
 
 
 
