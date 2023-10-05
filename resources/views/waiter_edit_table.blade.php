@@ -1,9 +1,10 @@
 @extends('layouts.app')
-<br>
-<br>
-<br>
 
 @section('content')
+<br>
+<br>
+<br>
+<br>
 <div class="container mt-5">
     <h1>Edit Reservation</h1>
     <form action="{{ route('update_table', $reservation->id) }}" method="post">

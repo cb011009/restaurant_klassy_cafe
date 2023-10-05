@@ -7,6 +7,8 @@ use App\Models\Table;
 use App\Models\User; 
 use App\Models\Reservation;
 use Carbon\Carbon;
+use App\Models\Order; 
+use App\Models\Product; 
 
 
 
@@ -38,7 +40,7 @@ class WaiterController extends Controller
         return view('waiter_panel', compact('reservations', 'currentDate'));
     }
 
-    public function filterReservations(Request $request)
+    /*public function filterReservations(Request $request)
     {
         $currentDate = now()->toDateString();
         $timeSlot = $request->input('time_slot');
@@ -49,7 +51,22 @@ class WaiterController extends Controller
             ->get();
 
         return view('waiter_panel', compact('reservations', 'currentDate'));
-    }
+    }*/
+
+    public function filterReservations(Request $request)
+{
+    // Get the selected date and time slot from the form
+    $selectedDate = $request->input('date');
+    $timeSlot = $request->input('time_slot');
+
+    // Fetch reservations for the selected date and time slot
+    $reservations = Reservation::where('date', $selectedDate)
+        ->where('time_slot', $timeSlot)
+        ->get();
+
+    // Pass the filtered reservations and selected date back to the view
+    return view('waiter_panel', compact('reservations', 'selectedDate'));
+}
 
     
 
@@ -132,6 +149,52 @@ public function updateTable(Request $request, $id)
     return redirect()->route('waiter_panel')->with('success', 'Table updated successfully.');
 }
 
+
+
+
+
+
+//order
+public function createOrder($id)
+{
+    // Find the reservation by ID
+    $reservation = Reservation::find($id);
+
+    // Check if the reservation exists
+    if (!$reservation) {
+        return redirect()->route('waiter_panel')->with('error', 'Reservation not found.');
+    }
+
+    // Fetch all available products or dishes (you'll need a Product model for this)
+    $products = Product::all();
+
+    return view('create_order', compact('reservation', 'products'));
+}
+
+public function storeOrder(Request $request,$id)
+{
+    // Validate the form data
+    $request->validate([
+        'waiter_id' => 'required|integer',
+        /*'reservation_id' => 'required|integer',*/
+        'product_code' => 'required|string',
+        'quantity' => 'required|integer',
+        'allergies' => 'nullable|string',
+    ]);
+
+    // Create a new order
+    Order::create([
+        'waiter_id' => $request->input('waiter_id'),
+        /*'reservation_id' => $request->input('reservation_id'),*/
+        'reservation_id' => $id,
+        'product_code' => $request->input('product_code'),
+        'quantity' => $request->input('quantity'),
+        'allergies' => $request->input('allergies'),
+    ]);
+
+    // Redirect back to the waiter dashboard with a success message
+    return redirect()->route('waiter_panel')->with('success', 'Order created successfully.');
+}
 
 
 

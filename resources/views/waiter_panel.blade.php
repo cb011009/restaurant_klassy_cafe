@@ -62,8 +62,12 @@
                                     @csrf
                                     <button type="submit" class="btn btn-primary">Edit</button>
                                 </form>
+                                <form action="{{ route('create_order', $reservation->id) }}" method="get">
+                                    @csrf
+                                    <button type="submit" class="btn btn-warning">Order</button>
+                                </form>
                             </div>
-                       
+                        </td>
                     </td>
                    
                 </tr>

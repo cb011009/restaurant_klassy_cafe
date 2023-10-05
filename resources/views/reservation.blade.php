@@ -15,9 +15,9 @@
                 <div class="left-text-content">
                     <div class="section-heading">
                         <h6>Contact Us</h6>
-                        <h2>Here You Can Make A Reservation Or Just walkin to our cafe</h2>
+                        <h2>Here You Can Make A Reservation Or Just walk-in to our cafe</h2>
                     </div>
-                    <p>Donec pretium est orci, non vulputate arcu hendrerit a. Fusce a eleifend riqsie, namei sollicitudin urna diam, sed commodo purus porta ut.</p>
+                    <p>Donec pretium est orci, non vulputate arcu hendrerit a. Fusce a eleifend risus, in sagittis urna diam, sed commodo purus porta ut.</p>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="phone">
@@ -97,6 +97,9 @@
                                     <button type="submit" id="form-submit" class="main-button-icon">Make A Reservation</button>
                                 </fieldset>
                             </div>
+                            
+                        
+
                         </div>
                     </form>
                 </div>
@@ -107,31 +110,32 @@
    
 </section>
 
-@if(isset($userReservation)) <!-- Check if $userReservation is set -->
+@if(isset($userReservations) && $userReservations->count() > 0)
 <div class="container">
-    <h2>Reservation Details</h2>
-    <p>Your reservation has been successfully booked!</p>
-
-    <h3>Reservation Information</h3>
+    <h2>Your Reservations</h2>
     <ul>
-        <li>Reservation ID: {{ $userReservation->id }}</li>
-        <li>Date: {{ $userReservation->date }}</li>
-        <li>Time Slot: {{ $userReservation->time_slot }}</li>
-        <li>Number of Guests: {{ $userReservation->number_of_guests }}</li>
-        <!--<li>Table Number: {{ $userReservation->table->table_number }}</li>-->
-        <!-- Add other reservation details as needed -->
+        @foreach($userReservations as $reservation)
+            <li>
+                <h3>Reservation ID: {{ $reservation->id }}</h3>
+                <p>Date: {{ $reservation->date }}</p>
+                <p>Time Slot: {{ $reservation->time_slot }}</p>
+                <p>Number of Guests: {{ $reservation->number_of_guests }}</p>
+                <!-- Add other reservation details as needed -->
+            </li>
+        @endforeach
     </ul>
-
-    
 </div>
 @endif
 
+
+
 @if(session('error'))
+<div class="container">
     <div class="alert alert-danger">
         {{ session('error') }}
     </div>
+</div>
 @endif
 
-
-
 @endsection
+

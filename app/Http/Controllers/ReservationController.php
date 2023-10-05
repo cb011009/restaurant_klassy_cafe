@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Reservation;
 use App\Models\Table;
+use App\Models\User;
 
 
 
@@ -15,13 +16,14 @@ class ReservationController extends Controller
     public function reservation()
     {
         return view('reservation');
+        
     }
 
     public function storeReservation(Request $request)
 {
     // Validate the form data
     $request->validate([
-        'number_of_guests' => 'required|integer',
+            'number_of_guests' => 'required|integer',
             'date' => 'required',
             'time_slot' => 'required',
             'occasion' => 'nullable|string',
@@ -87,11 +89,13 @@ class ReservationController extends Controller
 
 
         // Retrieve the reservation details (including the table assigned) after saving
-        $userReservation = Reservation::with('table')->find($reservation->id);
+        /*$userReservation = Reservation::with('table')->find($reservation->id);*/
 
         // Redirect to a success page or return the view with the reservation details
-      
-        return view('reservation', compact('userReservation'));
+       
+        $userReservations = Reservation::with('table')->where('user_id', Auth::user()->id)->get();
+        return view('reservation', compact('userReservations'));
+
        
 
 
@@ -101,8 +105,18 @@ class ReservationController extends Controller
         return redirect()->route('reservation')
             ->with('error', 'Sorry, all tables are booked for this time slot on ' . $date . '. Please choose a different time or date.');
     }
+
+
+   
+
+    
 }
 
+
+
+
+
+ 
 
 
 }
