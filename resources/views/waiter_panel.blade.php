@@ -1,12 +1,18 @@
 @extends('layouts.app') <!-- Use your layout as needed -->
-<br>
-<br>
-<br>
+
 @section('content')
+
+<br>
+<br>
+<br>
 <div class="container mt-5">
     <h1>Waiter Dashboard</h1>
     <form action="{{ route('waiter_filter') }}" method="post" class="mb-3">
         @csrf
+        <div class="form-group">
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" class="form-control" required>
+        </div>
         <div class="form-group">
             <label for="time_slot">Select Time Slot:</label>
             <select name="time_slot" id="time_slot" class="form-control">
@@ -52,21 +58,22 @@
                     <td>{{ $reservation->additional_info }}</td>
                     <td>
                         
-                            <div class="btn-group" role="group">
-                                <form action="{{ route('mark_reservation_as_done', $reservation->id) }}" method="post">
-                                    @csrf
-                                    @method('PATCH')
-                                    <button type="submit" class="btn btn-success mr-2">Done</button>
-                                </form>
-                                <form action="{{ route('edit_table', $reservation->id) }}" method="get">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary">Edit</button>
-                                </form>
-                                <form action="{{ route('create_order', $reservation->id) }}" method="get">
-                                    @csrf
-                                    <button type="submit" class="btn btn-warning">Order</button>
-                                </form>
-                            </div>
+                        <div class="btn-group" role="group">
+                            <form action="{{ route('mark_reservation_as_done', $reservation->id) }}" method="post">
+                                @csrf
+                                @method('PATCH')
+                                <button type="submit" class="btn btn-success">Done</button>
+                            </form>
+                            <form action="{{ route('edit_table', $reservation->id) }}" method="get">
+                                @csrf
+                                <button type="submit" class="btn btn-primary ml-2">Edit</button>
+                            </form>
+                            <form action="{{ route('create_order', $reservation->id) }}" method="get">
+                                @csrf
+                                <button type="submit" class="btn btn-warning ml-2">Order</button>
+                            </form>
+                        </div>
+                        
                         </td>
                     </td>
                    

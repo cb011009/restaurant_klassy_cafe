@@ -145,6 +145,14 @@ public function updateTable(Request $request, $id)
         $previousTable->save();
     }
 
+    //newly added
+    // Change the status of the newly assigned table to "booked"
+    $newTable = Table::find($tableId);
+    if ($newTable) {
+        $newTable->status = 'booked';
+        $newTable->save();
+    }
+
     // Redirect back to the waiter dashboard with a success message
     return redirect()->route('waiter_panel')->with('success', 'Table updated successfully.');
 }
@@ -177,20 +185,33 @@ public function storeOrder(Request $request,$id)
     $request->validate([
         'waiter_id' => 'required|integer',
         /*'reservation_id' => 'required|integer',*/
-        'product_code' => 'required|string',
-        'quantity' => 'required|integer',
+        'product_codes' => 'required|string',
+        'quantities' => 'required|integer',
         'allergies' => 'nullable|string',
     ]);
 
     // Create a new order
-    Order::create([
+    /*Order::create([
         'waiter_id' => $request->input('waiter_id'),
-        /*'reservation_id' => $request->input('reservation_id'),*/
+      
         'reservation_id' => $id,
         'product_code' => $request->input('product_code'),
         'quantity' => $request->input('quantity'),
         'allergies' => $request->input('allergies'),
-    ]);
+    ]);*/
+
+    $productCodes = $request->input('product_codes');
+    $quantities = $request->input('quantities');
+
+    foreach ($productCodes as $key => $productCode) {
+        Order::create([
+            'waiter_id' => $request->input('waiter_id'),
+            'reservation_id' => $id,
+            'product_code' => $productCode,
+            'quantity' => $quantities[$key],
+            'allergies' => isset($allergies[$key]) ? $allergies[$key] : null, // Check if allergies were provided for this item
+        ]);
+    }
 
     // Redirect back to the waiter dashboard with a success message
     return redirect()->route('waiter_panel')->with('success', 'Order created successfully.');
