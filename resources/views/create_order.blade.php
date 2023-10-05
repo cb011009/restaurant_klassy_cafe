@@ -105,6 +105,7 @@
                 <th>Product Code</th>
                 <th>Quantity</th>
                 <th>Allergies (optional)</th>
+                <th>Order Status</th>
             </tr>
         </thead>
         <tbody>
@@ -113,6 +114,7 @@
                     <td>{{ $order->product_code }}</td>
                     <td>{{ $order->quantity }}</td>
                     <td>{{ $order->allergies ?? 'N/A' }}</td>
+                    <td>{{ $order->order_status }}</td>
                 </tr>
             @empty
                 <tr>

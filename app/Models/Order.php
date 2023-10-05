@@ -15,6 +15,7 @@ class Order extends Model
         'product_code',
         'quantity',
         'allergies',
+        'order_status',
     ];
 
     public function waiter()

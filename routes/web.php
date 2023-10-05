@@ -59,6 +59,7 @@ Route::patch('/waiter_edit_table/{id}', [App\Http\Controllers\WaiterController::
 
 
 Route::get('/chef_panel', [App\Http\Controllers\ChefController::class, 'chef_panel'])->name('chef_panel');
+Route::patch('/chef_panel/{id}', [App\Http\Controllers\ChefController::class, 'markOrderDone'])->name('chef_mark_order_done');
 
 
 
