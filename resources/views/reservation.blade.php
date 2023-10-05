@@ -122,8 +122,14 @@
         <!-- Add other reservation details as needed -->
     </ul>
 
-    <!-- You can provide links or buttons for the user to go back or perform other actions -->
+    
 </div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
 @endif
 
 

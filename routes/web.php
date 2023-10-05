@@ -39,6 +39,12 @@ Route::get('/admin_panel', [App\Http\Controllers\AdminController::class, 'manage
 //newly added for staff roles
 
 Route::get('/waiter_panel', [App\Http\Controllers\WaiterController::class, 'waiter_panel'])->name('waiter_panel');
+Route::patch('/waiter_panel/{id}', [App\Http\Controllers\WaiterController::class, 'markAsdone'])->name('mark_reservation_as_done');
+Route::get('/waiter_edit_table/{id}', [App\Http\Controllers\WaiterController::class, 'editTable'])->name('edit_table');
+Route::patch('/waiter_edit_table/{id}', [App\Http\Controllers\WaiterController::class, 'updateTable'])->name('update_table');
+
+
+
 Route::get('/chef_panel', [App\Http\Controllers\ChefController::class, 'chef_panel'])->name('chef_panel');
 
 

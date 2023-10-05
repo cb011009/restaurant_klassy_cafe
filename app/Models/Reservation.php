@@ -10,26 +10,7 @@ class Reservation extends Model
 
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-        'number_of_guests',
-        'time_slot',
-        'date',
-        'occasion',
-        'additional_info',
-        'table_id', // Add the foreign key column
-    ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function table()
-    {
-        return $this->belongsTo(Table::class);
-    }
-    /*use HasFactory;
+   
 
     
 
@@ -43,15 +24,15 @@ class Reservation extends Model
         'additional_info',
     ];
 
-    /*public function user()
+    public function user()
     {
         return $this->belongsTo(User::class);
-    }*/
+    }
 
-    /*public function table()
+    public function table()
     {
         return $this->belongsTo(Table::class);
-    }*/
+    }
    
    
 }

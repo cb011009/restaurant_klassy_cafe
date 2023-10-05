@@ -7,18 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Table extends Model
 {
-    protected $fillable = [
-        'table_number',
-        'seating_capacity',
-        'status', // Enum column with values 'available' or 'booked'
-    ];
-
-    // Define a relationship to reservations
-    public function reservations()
-    {
-        return $this->hasMany(Reservation::class);
-    }
-   /* use HasFactory;
+   use HasFactory;
 
      protected $fillable = [
         'table_number',
@@ -26,11 +15,11 @@ class Table extends Model
         'status',
     ];
 
-    /*public function reservations()
+    public function reservations()
     {
         return $this->hasMany(Reservation::class);
     }
-    public function reservations()
+   /* public function reservations()
     {
         return $this->hasMany(Reservation::class, 'table_id');
     }*/

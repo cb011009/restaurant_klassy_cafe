@@ -29,26 +29,47 @@
         <button type="submit" class="btn btn-primary">Filter Reservations</button>
     </form>
 
+    
+
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>User Name</th>
+                <th>Table Number</th>
+                <th>Name</th>
                 <th>Number of Guests</th>
                 <th>Occasion</th>
                 <th>Additional Info</th>
+                <th>Actions</th> <!-- Added column for "Done" button -->
             </tr>
         </thead>
         <tbody>
             @forelse($reservations as $reservation)
                 <tr>
+                    <td>{{ $reservation->table_id}}</td>
                     <td>{{ $reservation->user->name }}</td>
                     <td>{{ $reservation->number_of_guests }}</td>
                     <td>{{ $reservation->occasion }}</td>
                     <td>{{ $reservation->additional_info }}</td>
+                    <td>
+                        
+                            <div class="btn-group" role="group">
+                                <form action="{{ route('mark_reservation_as_done', $reservation->id) }}" method="post">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="btn btn-success mr-2">Done</button>
+                                </form>
+                                <form action="{{ route('edit_table', $reservation->id) }}" method="get">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </form>
+                            </div>
+                       
+                    </td>
+                   
                 </tr>
             @empty
                 <tr>
-                    <td colspan="4">No reservations found.</td>
+                    <td colspan="5">No reservations found.</td>
                 </tr>
             @endforelse
         </tbody>

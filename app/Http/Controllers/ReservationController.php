@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Reservation;
 use App\Models\Table;
 
+
+
+
 class ReservationController extends Controller
 {
     public function reservation()
@@ -87,7 +90,7 @@ class ReservationController extends Controller
         $userReservation = Reservation::with('table')->find($reservation->id);
 
         // Redirect to a success page or return the view with the reservation details
-        /*return view('reservation_success', compact('userReservation'));*/
+      
         return view('reservation', compact('userReservation'));
        
 
