@@ -24,6 +24,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'phone_number',
         'address',
         'password',
+        'repeat_user',
     ];
 
     /**
@@ -45,4 +46,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function reservations()
+    {
+    return $this->hasMany(Reservation::class, 'user_id');
+    }
+
 }
