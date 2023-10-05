@@ -31,7 +31,7 @@ Route::post('/reservation', [App\Http\Controllers\ReservationController::class, 
 
 
 
-Route::delete('/reservations/{id}', [App\Http\Controllers\ReservationController::class, 'deleteReservation'])->name('delete_reservation');
+Route::post('/reservations/{id}', [App\Http\Controllers\ReservationController::class, 'cancelReservation'])->name('cancel_reservation');
 
 
 

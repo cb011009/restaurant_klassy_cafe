@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<br>
-<br>
-<br>
-<br>
-<br>
 
 <!-- ***** Reservation Us Area Starts ***** -->
 <section class="section" id="reservation">
@@ -14,26 +9,10 @@
             <div class="col-lg-6 align-self-center">
                 <div class="left-text-content">
                     <div class="section-heading">
-                        <h6>Contact Us</h6>
-                        <h2>Here You Can Make A Reservation Or Just walk-in to our cafe</h2>
+                        <h6>Visit Us</h6>
+                        <h2>Here You Can Make A Reservation and view your reservation history below.</h2>
                     </div>
-                    <p>Donec pretium est orci, non vulputate arcu hendrerit a. Fusce a eleifend risus, in sagittis urna diam, sed commodo purus porta ut.</p>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="phone">
-                                <i class="fa fa-phone"></i>
-                                <h4>Phone Numbers</h4>
-                                <span><a href="#">080-090-0990</a><br><a href="#">080-090-0880</a></span>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="message">
-                                <i class="fa fa-envelope"></i>
-                                <h4>Emails</h4>
-                                <span><a href="#">hello@company.com</a><br><a href="#">info@company.com</a></span>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
             <div class="col-lg-6">
@@ -111,29 +90,49 @@
 </section>
 
 @if(isset($userReservations) && $userReservations->count() > 0)
+<br>
+<br>
 <div class="container">
     <h2>Your Reservations</h2>
-    <ul>
-        @foreach($userReservations as $reservation)
-            <li>
-                <h3>Reservation ID: {{ $reservation->id }}</h3>
-                <p>Date: {{ $reservation->date }}</p>
-                <p>Time Slot: {{ $reservation->time_slot }}</p>
-                <p>Number of Guests: {{ $reservation->number_of_guests }}</p>
-                <!-- Add other reservation details as needed -->
-
-
-                <!-- Delete Button -->
-                <form action="{{ route('delete_reservation', $reservation->id) }}" method="post">
-                    @csrf
-                    @method('delete')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            </li>
-        @endforeach
-    </ul>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Date</th>
+                <th>Time Slot</th>
+                <th>Number of Guests</th>
+                <th>Additional Information</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($userReservations as $reservation)
+            <tr>
+                <td>{{ $reservation->id }}</td>
+                <td>{{ $reservation->date }}</td>
+                <td>{{ $reservation->time_slot }}</td>
+                <td>{{ $reservation->number_of_guests }}</td>
+                <td>{{ $reservation->additional_info }}</td>
+                <td>
+                    <form method="POST" action="{{ route('cancel_reservation', ['id' => $reservation->id]) }}">
+                        @csrf
+                        @method('POST')
+                        <button type="submit" class="btn btn-danger">Cancel Reservation</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+@else
+<div class="container">
+    <br>
+    <br>
+    <h2>You have no reservations.</h2>
 </div>
 @endif
+
 
 
 

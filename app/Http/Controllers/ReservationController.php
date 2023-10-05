@@ -21,11 +21,22 @@ class ReservationController extends Controller
 
         return view('reservation', compact('userReservations'));*/
 
-        $userReservations = Reservation::where('user_id', Auth::id())
+       /* $userReservations = Reservation::where('user_id', Auth::id())
             ->where('status', '!=', 'done')
             ->get();
 
-        return view('reservation', compact('userReservations'));
+        return view('reservation', compact('userReservations'));*/
+
+        
+        $userReservations = Reservation::where('user_id', Auth::id())
+        ->where('dining_status', 'not_done')
+        ->where('dining_status', '!=', 'cancelled')
+        ->get();
+
+    
+         return view('reservation', compact('userReservations'));
+    
+
 
         
     }
@@ -41,11 +52,11 @@ class ReservationController extends Controller
             'additional_info' => 'nullable|string',
     ]);
 
-    // Capture user-selected date and time slot
+  
     $date = $request->input('date');
     $timeSlot = $request->input('time_slot');
 
-    // Check if all tables are booked for the selected time slot on the given date
+  
     $availableTableCount = Table::where('status', 'free')
         ->whereDoesntHave('reservations', function ($query) use ($date, $timeSlot) {
             $query->where('date', $date)->where('time_slot', $timeSlot);
@@ -53,22 +64,21 @@ class ReservationController extends Controller
         ->count();
 
     if ($availableTableCount === 0) {
-        // All tables are booked for this time slot and date
-        // Inform the user and suggest alternative options
+     
         return redirect()->route('reservation')
             ->with('error', 'Sorry, all tables are booked for this time slot on ' . $date . '. Please choose a different time or date.');
     }
 
-    // Find the first available table
+   
     $table = Table::where('status', 'free')
         ->whereDoesntHave('reservations', function ($query) use ($date, $timeSlot) {
             $query->where('date', $date)->where('time_slot', $timeSlot);
         })
         ->first();
 
-    // If a table is available, create the reservation
+   
     if ($table) {
-        // Mark the table as booked
+       
         $table->status = 'booked';
         
         try {
@@ -79,7 +89,6 @@ class ReservationController extends Controller
 
        
 
-        // Create a reservation for the user and associate it with the selected table
         $reservation = new Reservation([
             'user_id' => Auth::user()->id,
             'number_of_guests' => $request->input('number_of_guests'),
@@ -97,12 +106,6 @@ class ReservationController extends Controller
         } catch (\Exception $e) {
             dd($e->getMessage()); 
         }
-
-
-        // Retrieve the reservation details (including the table assigned) after saving
-        /*$userReservation = Reservation::with('table')->find($reservation->id);*/
-
-        // Redirect to a success page or return the view with the reservation details
        
         $userReservations = Reservation::with('table')->where('user_id', Auth::user()->id)->get();
         return view('reservation', compact('userReservations'));
@@ -137,22 +140,63 @@ class ReservationController extends Controller
 
     
 
-    public function deleteReservation($id)
-    {
-        // Retrieve the reservation by ID
-        $reservation = Reservation::find($id);
+public function cancelReservation($id)
+{
+    // Find the reservation by ID
+    $reservation = Reservation::find($id);
 
-        // Check if the reservation exists
-        if (!$reservation) {
-            return redirect()->route('reservation')->with('error', 'Reservation not found.');
-        }
-
-        // Delete the reservation
-        $reservation->delete();
-
-        // Redirect back to the reservations page with a success message
-        return redirect()->route('reservation')->with('success', 'Reservation deleted successfully.');
+    // Check if the reservation exists
+    if (!$reservation) {
+        return redirect()->route('reservations')->with('error', 'Reservation not found.');
     }
+
+    // Check if the reservation is in the 'not_done' state
+    if ($reservation->dining_status !== 'not_done') {
+        return redirect()->route('reservation')->with('error', 'Reservation cannot be cancelled.');
+    }
+
+    // Get the associated table
+    $table = $reservation->table;
+
+    // Update the dining_status to 'cancelled'
+    $reservation->dining_status = 'cancelled';
+
+    // Save the changes to the database
+    $reservation->save();
+
+    // Update the associated table's status to 'free'
+    if ($table) {
+        $table->status = 'free';
+        $table->save();
+    }
+
+    return redirect()->route('reservation')->with('success', 'Reservation has been cancelled.');
+}
+
+
+    /*public function cancelReservation($id)
+    {
+      
+    $reservation = Reservation::find($id);
+
+    
+    if (!$reservation) {
+        return redirect()->route('reservations')->with('error', 'Reservation not found.');
+    }
+
+    
+    if ($reservation->dining_status !== 'not_done') {
+        return redirect()->route('reservation')->with('error', 'Reservation cannot be cancelled.');
+    }
+
+   
+    $reservation->dining_status = 'cancelled';
+    
+    
+    $reservation->save();
+
+    return redirect()->route('reservation')->with('success', 'Reservation has been cancelled.');
+    }*/
 
 
 
