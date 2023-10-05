@@ -8,6 +8,7 @@
 @section('content')
 <div class="container">
     <h1>User Management</h1>
+    <a href="{{ route('admin_analytics') }}" class="btn btn-primary mb-3">Customer Analytics</a>
     <table class="table">
         <thead>
             <tr>

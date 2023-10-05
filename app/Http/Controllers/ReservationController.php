@@ -15,7 +15,18 @@ class ReservationController extends Controller
 {
     public function reservation()
     {
-        return view('reservation');
+        
+
+        /*$userReservations = Reservation::where('user_id', Auth::id())->get();
+
+        return view('reservation', compact('userReservations'));*/
+
+        $userReservations = Reservation::where('user_id', Auth::id())
+            ->where('status', '!=', 'done')
+            ->get();
+
+        return view('reservation', compact('userReservations'));
+
         
     }
 
@@ -107,10 +118,43 @@ class ReservationController extends Controller
     }
 
 
+
+
+
+
+
+
+    
+    
+
    
 
     
 }
+
+//edit and cancel
+
+
+    
+
+    public function deleteReservation($id)
+    {
+        // Retrieve the reservation by ID
+        $reservation = Reservation::find($id);
+
+        // Check if the reservation exists
+        if (!$reservation) {
+            return redirect()->route('reservation')->with('error', 'Reservation not found.');
+        }
+
+        // Delete the reservation
+        $reservation->delete();
+
+        // Redirect back to the reservations page with a success message
+        return redirect()->route('reservation')->with('success', 'Reservation deleted successfully.');
+    }
+
+
 
 
 

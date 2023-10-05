@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +28,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/reservation', [App\Http\Controllers\UserController::class, 'reservation'])->name('reservation');*/
 Route::get('/reservation', [App\Http\Controllers\ReservationController::class, 'reservation'])->name('reservation');
 Route::post('/reservation', [App\Http\Controllers\ReservationController::class, 'storeReservation'])->name('reservation_store');
+
+
+
+Route::delete('/reservations/{id}', [App\Http\Controllers\ReservationController::class, 'deleteReservation'])->name('delete_reservation');
 
 
 
@@ -73,6 +78,10 @@ Route::put('/admin_update_user/{id}', [App\Http\Controllers\AdminController::cla
 
 // Delete User (DELETE request)
 Route::delete('/admin_delete_user/{id}', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('admin_delete_user');
+
+
+Route::get('/admin_analytics', [ App\Http\Controllers\AnalyticsController::class, 'showAnalytics'])->name('admin_analytics');
+
 
 
 

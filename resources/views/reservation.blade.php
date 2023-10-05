@@ -121,6 +121,14 @@
                 <p>Time Slot: {{ $reservation->time_slot }}</p>
                 <p>Number of Guests: {{ $reservation->number_of_guests }}</p>
                 <!-- Add other reservation details as needed -->
+
+
+                <!-- Delete Button -->
+                <form action="{{ route('delete_reservation', $reservation->id) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </li>
         @endforeach
     </ul>
