@@ -94,8 +94,12 @@ Route::get('/category_delete{id}', [ App\Http\Controllers\AdminController::class
 Route::post('/admin_fliter', [ App\Http\Controllers\AdminController::class, 'filterProducts'])->name('admin_filter');
 
 
+//newly added to edit product and product categories
+Route::post('/update_product/{id}', [ App\Http\Controllers\AdminController::class, 'updateProduct'])->name('admin_update_product');
+Route::get('/product_edit/{id}', [ App\Http\Controllers\AdminController::class, 'editProduct'])->name('admin_edit_product');
+Route::get('/category_edit/{id}', [App\Http\Controllers\AdminController::class, 'editCategory'])->name('admin_edit_category');
 
-
+Route::post('/category_update/{id}', [ App\Http\Controllers\AdminController::class, 'updateCategory'])->name('admin_update_category');
 
 
 ///

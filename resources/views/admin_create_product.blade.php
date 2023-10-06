@@ -78,6 +78,7 @@
                         <td>{{ $category->category_name }}</td>
                         <td>
                             <a href="{{ route('admin_delete_category', ['id' => $category->id]) }}" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{{ route('admin_edit_category', ['id' => $category->id]) }}" class="btn btn-primary btn-sm">Edit</a>
                         </td>
                     </tr>
                 @endforeach
@@ -132,6 +133,7 @@
                             
                             <td>
                                 <a href="{{ route('delete_product', ['id' => $product->id]) }}" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="{{ route('admin_edit_product', ['id' => $product->id]) }}" class="btn btn-primary btn-sm">Edit</a>
                             </td>
                         </tr>
                     @endforeach

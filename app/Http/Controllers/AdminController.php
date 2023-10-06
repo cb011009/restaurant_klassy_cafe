@@ -161,6 +161,75 @@ public function createProductPage()
     return redirect()->route('admin_create_product')->with('error', 'Category not found.');
 }
 
+//newly added for editing 
+
+public function editProduct($id)
+{
+    $product = Product::find($id);
+    $categories = ProductCategory::all();
+
+    return view('admin_edit_product', compact('product', 'categories'));
+}
+
+public function updateProduct(Request $request, $id)
+{
+    $product = Product::find($id);
+
+    if ($product) {
+        // Validate the request data
+        $request->validate([
+            'product_code' => 'required',
+            'product_name' => 'required',
+            'category_id' => 'required',
+        ]);
+
+        // Update the product data
+        $product->code = $request->input('product_code');
+        $product->name = $request->input('product_name');
+        $product->product_category_id = $request->input('category_id');
+        $product->save();
+
+        return redirect()->route('admin_create_product')->with('success', 'Product updated successfully.');
+    }
+
+    return redirect()->route('admin_create_product')->with('error', 'Product not found.');
+}
+
+
+public function editCategory($id)
+{
+    $category = ProductCategory::find($id);
+
+    if ($category) {
+        return view('admin_edit_category', compact('category'));
+    }
+
+    return redirect()->route('admin_create_product')->with('error', 'Category not found.');
+}
+
+
+public function updateCategory(Request $request, $id)
+{
+    $category = ProductCategory::find($id);
+
+    if ($category) {
+        // Validate the request data
+        $request->validate([
+            'category_name' => 'required|max:255',
+        ]);
+
+        // Update the category data
+        $category->category_name = $request->input('category_name');
+        $category->save();
+
+        return redirect()->route('admin_create_product')->with('success', 'Category updated successfully.');
+    }
+
+    return redirect()->route('admin_create_product')->with('error', 'Category not found.');
+}
+
+
+
 
 
 }
