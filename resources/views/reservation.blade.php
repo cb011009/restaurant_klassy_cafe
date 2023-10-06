@@ -12,7 +12,8 @@
                         <h6>Visit Us</h6>
                         <h2>Here You Can Make A Reservation and view your reservation history below.</h2>
                     </div>
-                   
+                    <!--newly added-->
+                    <p> Max 4 pax per table: For more than 4 packs please reserve multiple tables or, contact hotline for group reservations </p>
                 </div>
             </div>
             <div class="col-lg-6">
