@@ -1,6 +1,13 @@
 @extends('layouts.app') <!-- Use your layout as needed -->
 
 @section('content')
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 <div class="container">
     <h1>Edit User</h1>
     <form method="POST" action="{{ route('admin_update_user', $user->id) }}">
