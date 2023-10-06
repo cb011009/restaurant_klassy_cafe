@@ -9,6 +9,7 @@
 <div class="container">
     <h1>User Management</h1>
     <a href="{{ route('admin_analytics') }}" class="btn btn-primary mb-3">Customer Analytics</a>
+    <a href="{{ route('admin_create_product') }}" class="btn btn-primary mb-3">Products & Categories</a>
     <table class="table">
         <thead>
             <tr>

@@ -83,6 +83,21 @@ Route::delete('/admin_delete_user/{id}', [App\Http\Controllers\AdminController::
 Route::get('/admin_analytics', [ App\Http\Controllers\AnalyticsController::class, 'showAnalytics'])->name('admin_analytics');
 
 
+//newly added for manage products by admin
+
+
+Route::get('/admin_create_product', [ App\Http\Controllers\AdminController::class, 'createProductPage'])->name('admin_create_product');
+Route::post('/admin_add_product', [ App\Http\Controllers\AdminController::class, 'addProduct'])->name('admin_add_product');
+Route::post('/admin_create_category', [ App\Http\Controllers\AdminController::class, 'addCategory'])->name('admin_create_category');
+Route::get('/admin_delete{id}', [ App\Http\Controllers\AdminController::class, 'deleteProduct'])->name('delete_product');
+Route::post('/admin_fliter', [ App\Http\Controllers\AdminController::class, 'filterProducts'])->name('admin_filter');
+
+
+
+
+
+
+///
 
 
 Route::get('/email/verify', function () {

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User; 
+use App\Models\Product;
+use App\Models\ProductCategory;
 
 class AdminController extends Controller
 {
@@ -68,5 +70,79 @@ public function deleteUser($id)
         // Handle the case when the user is not found
         return redirect()->route('admin_panel')->with('error', 'User not found.');
     }
+
+
+
+
+
+
+//newly added for managing products and product catergories
+
+
+public function createProductPage()
+    {
+        $products = Product::all();
+        $categories = ProductCategory::all();
+
+        return view('admin_create_product', compact('products', 'categories'));
+    }
+
+
+    public function addProduct(Request $request)
+    {
+        // Validate the request data
+
+        $product = new Product;
+        $product->code = $request->input('product_code');
+        $product->name = $request->input('product_name');
+        $product->product_category_id = $request->input('category_id');
+        $product->save();
+
+        return redirect()->route('admin_create_product')->with('success', 'Product added successfully.');
+    }
+
+    public function addCategory(Request $request)
+{
+    // Validate the request data
+    $request->validate([
+        'category_name' => 'required|max:255', // Adjust as needed
+    ]);
+    $category = new ProductCategory;
+    $category->category_name = $request->input('category_name'); // Use the correct column name
+    $category->save();
+
+    return redirect()->route('admin_create_product')->with('success', 'Category added successfully.');
+}
+
+
+
+    public function deleteProduct($id)
+    {
+        $product = Product::find($id);
+
+        if ($product) {
+            $product->delete();
+            return redirect()->route('admin_create_product')->with('success', 'Product deleted successfully.');
+        }
+
+        return redirect()->route('admin_create_product')->with('error', 'Product not found.');
+    }
+
+
+    public function filterProducts(Request $request)
+    {
+        $categoryId = $request->input('category_id');
+        /*$products = Product::where('product_category_id', $categoryId)->get();*/
+       
+        $products = Product::where('product_category_id', $categoryId)->with('category')->get();
+
+
+        $categories = ProductCategory::all();
+
+        return view('admin_create_product', compact('products', 'categories'));
+
+      
+    }
+
 
 }
