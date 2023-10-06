@@ -108,7 +108,7 @@
             </thead>
             <tbody>
                 @foreach($userReservations as $reservation)
-                    @if($reservation->dining_status !== 'cancelled')
+                    @if($reservation->dining_status !== 'cancelled' && $reservation->dining_status !== 'done')
                         <tr>
                             <td>{{ $reservation->id }}</td>
                             <td>{{ $reservation->date }}</td>
