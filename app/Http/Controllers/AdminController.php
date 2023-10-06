@@ -145,4 +145,22 @@ public function createProductPage()
     }
 
 
+
+    //newly added for delete category
+
+    public function deleteCategory($id)
+{
+   
+    $category = ProductCategory::find($id);
+
+    if ($category) {
+        $category->delete();
+        return redirect()->route('admin_create_product')->with('success', 'Category deleted successfully.');
+    }
+
+    return redirect()->route('admin_create_product')->with('error', 'Category not found.');
+}
+
+
+
 }

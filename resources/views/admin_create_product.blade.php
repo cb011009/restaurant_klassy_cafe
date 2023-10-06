@@ -61,12 +61,38 @@
         </div>
     </div>
 
+    <!-- List of Categories -->
+<div class="card">
+    <div class="card-header">Category List</div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Category Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($categories as $category)
+                    <tr>
+                        <td>{{ $category->category_name }}</td>
+                        <td>
+                            <a href="{{ route('admin_delete_category', ['id' => $category->id]) }}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    
+
 
     
 
 
    
-    <a href="{{ route('admin_create_category') }}" class="btn btn-primary mb-3">Categories</a>
 
     <!-- Product List and Filter -->
     <div class="card">

@@ -90,6 +90,7 @@ Route::get('/admin_create_product', [ App\Http\Controllers\AdminController::clas
 Route::post('/admin_add_product', [ App\Http\Controllers\AdminController::class, 'addProduct'])->name('admin_add_product');
 Route::post('/admin_create_category', [ App\Http\Controllers\AdminController::class, 'addCategory'])->name('admin_create_category');
 Route::get('/admin_delete{id}', [ App\Http\Controllers\AdminController::class, 'deleteProduct'])->name('delete_product');
+Route::get('/category_delete{id}', [ App\Http\Controllers\AdminController::class, 'deleteCategory'])->name('admin_delete_category');
 Route::post('/admin_fliter', [ App\Http\Controllers\AdminController::class, 'filterProducts'])->name('admin_filter');
 
 
