@@ -42,11 +42,16 @@
             <tbody>
                 <tr class="item-template">
                     <td>
-                        <select name="product_codes[]" class="form-control" required>
+                        <!--<select name="product_codes[]" class="form-control" required>
                             <option value="product1">Product 1</option>
                             <option value="product2">Product 2</option>
                             <option value="product3">Product 3</option>
-                            <!-- Add more options as needed -->
+                           
+                        </select>-->
+                        <select name="product_codes[]" class="form-control" required>
+                            @foreach ($products as $product)
+                                <option value="{{ $product->code }}">{{ $product->name }}</option>
+                            @endforeach
                         </select>
                     </td>
                     <td>
@@ -102,7 +107,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Product Code</th>
+                <th>Product </th>
                 <th>Quantity</th>
                 <th>Allergies (optional)</th>
                 <th>Order Status</th>

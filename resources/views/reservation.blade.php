@@ -91,48 +91,51 @@
 </section>
 
 @if(isset($userReservations) && $userReservations->count() > 0)
-<br>
-<br>
-<div class="container">
-    <h2>Your Reservations</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Reservation ID</th>
-                <th>Date</th>
-                <th>Time Slot</th>
-                <th>Number of Guests</th>
-                <th>Additional Information</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($userReservations as $reservation)
-            <tr>
-                <td>{{ $reservation->id }}</td>
-                <td>{{ $reservation->date }}</td>
-                <td>{{ $reservation->time_slot }}</td>
-                <td>{{ $reservation->number_of_guests }}</td>
-                <td>{{ $reservation->additional_info }}</td>
-                <td>
-                    <form method="POST" action="{{ route('cancel_reservation', ['id' => $reservation->id]) }}">
-                        @csrf
-                        @method('POST')
-                        <button type="submit" class="btn btn-danger">Cancel Reservation</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
+    <br>
+    <br>
+    <div class="container">
+        <h2>Your Reservations</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Reservation ID</th>
+                    <th>Date</th>
+                    <th>Time Slot</th>
+                    <th>Number of Guests</th>
+                    <th>Additional Information</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($userReservations as $reservation)
+                    @if($reservation->dining_status !== 'cancelled')
+                        <tr>
+                            <td>{{ $reservation->id }}</td>
+                            <td>{{ $reservation->date }}</td>
+                            <td>{{ $reservation->time_slot }}</td>
+                            <td>{{ $reservation->number_of_guests }}</td>
+                            <td>{{ $reservation->additional_info }}</td>
+                            <td>
+                                <form method="POST" action="{{ route('cancel_reservation', ['id' => $reservation->id]) }}">
+                                    @csrf
+                                    @method('POST')
+                                    <button type="submit" class="btn btn-danger">Cancel Reservation</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endif
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @else
-<div class="container">
-    <br>
-    <br>
-    <h2>You have no reservations.</h2>
-</div>
+    <div class="container">
+        <br>
+        <br>
+        <h2>You have no reservations.</h2>
+    </div>
 @endif
+
 
 
 
