@@ -31,4 +31,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    //added for chatOPENAI
+    'openai' => [
+        'secret' => env('OPENAI_SECRET'),
+    ],
+    //added for chatOPENAI
+
 ];

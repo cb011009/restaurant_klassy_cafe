@@ -12,15 +12,10 @@ use App\Models\Product;
 
 
 
-
 class WaiterController extends Controller
 {
     public function waiter_panel()
     {
-     /* $reservations = []; 
-       $currentDate = now()->toDateString();
-
-      return view('waiter_panel', compact('reservations', 'currentDate'));*/
       $reservations = Reservation::all(); // Fetch all reservations
 
       // Filter reservations to include only "not_done" ones
@@ -258,6 +253,126 @@ public function storeOrder(Request $request, $id)
     return redirect()->route('waiter_panel')->with('success', 'Order created successfully.');
 }
 */
+
+
+public function visitCustomerFoodProfile(Reservation $reservation)
+    {
+        // You can pass any data you need to the 'food_profile' view
+        //return view('food_profile', ['reservation' => $reservation]);
+
+
+
+
+ // Get user's reservations
+$userReservations = $reservation->user->reservations;
+
+// Group reservations by day and time slot
+$reservationsGroupedByDay = $userReservations->groupBy([
+    function ($item) {
+        return Carbon::parse($item->date)->format('l'); // Convert date to day of the week
+    },
+    'time_slot',
+]);
+
+// Calculate the total number of reservations per day
+$totalReservationsPerDay = $userReservations->groupBy(function ($item) {
+    return Carbon::parse($item->date)->format('l'); // Convert date to day of the week
+})->map->count();
+
+// Determine the most frequent day and time slot
+$mostFrequentDay = $totalReservationsPerDay->sortDesc()->keys()->first();
+$mostFrequentTimeSlot = $userReservations->groupBy('time_slot')->map->count()->sortDesc()->keys()->first();
+
+// Get all days of the week
+$allDaysOfWeek = collect([
+    'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',
+]);
+
+// Get the days with counts greater than 3
+$frequentDays = $totalReservationsPerDay->filter(function ($count) {
+    return $count > 3;
+});
+
+
+
+//Dishes 
+
+/*
+$userOrders = $userReservations->flatMap(function ($reservation) {
+    return $reservation->orders;
+});
+
+// Group orders by product code
+$mostOrderedDishes = $userOrders->groupBy('product_code');
+
+// Determine the most ordered dish
+$mostOrderedDish = $mostOrderedDishes->sortDesc()->keys()->first();
+
+// Pass the data to the view
+return view('food_profile', [
+    'reservation' => $reservation,
+    'reservationsGroupedByDay' => $reservationsGroupedByDay,
+    'totalReservationsPerDay' => $totalReservationsPerDay,
+    'mostFrequentDay' => $mostFrequentDay,
+    'mostFrequentTimeSlot' => $mostFrequentTimeSlot,
+    'allDaysOfWeek' => $allDaysOfWeek,
+    'frequentDays' => $frequentDays,
+    'mostOrderedDishes' => $mostOrderedDishes,
+    'mostOrderedDish' => $mostOrderedDish,
+]);
+*/
+
+
+// Get user's orders
+$userOrders = $userReservations->flatMap(function ($reservation) {
+    return $reservation->orders;
+});
+
+// Group orders by product code
+$mostOrderedDishes = $userOrders->groupBy('product_code');
+
+// Fetch product details and allergies based on product code
+$productDetails = [];
+foreach ($mostOrderedDishes as $productCode => $orders) {
+    $product = Product::where('code', $productCode)->first(); // Assuming 'Product' is your model for the products table
+    if ($product) {
+        $allergies = $orders->pluck('allergies')->unique()->filter(); // Assuming 'allergies' is the column in the 'orders' table
+        $productDetails[$productCode] = [
+            'name' => $product->name,
+            'allergies' => $allergies->toArray(),
+        ];
+    }
+}
+
+// Determine the most ordered dish
+$mostOrderedDish = $mostOrderedDishes->sortDesc()->keys()->first();
+
+// Pass the data to the view
+return view('food_profile', [
+    'reservation' => $reservation,
+    'reservationsGroupedByDay' => $reservationsGroupedByDay,
+    'totalReservationsPerDay' => $totalReservationsPerDay,
+    'mostFrequentDay' => $mostFrequentDay,
+    'mostFrequentTimeSlot' => $mostFrequentTimeSlot,
+    'allDaysOfWeek' => $allDaysOfWeek,
+    'frequentDays' => $frequentDays,
+    'mostOrderedDishes' => $mostOrderedDishes,
+    'mostOrderedDish' => $mostOrderedDish,
+    'productDetails' => $productDetails,
+]);
+
+
+
+
+
+
+
+
+
+
+
+        
+    }
 
 
 

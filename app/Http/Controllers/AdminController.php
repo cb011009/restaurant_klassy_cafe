@@ -95,6 +95,7 @@ public function createProductPage()
         $product = new Product;
         $product->code = $request->input('product_code');
         $product->name = $request->input('product_name');
+        $product->description = $request->input('product_description');
         $product->product_category_id = $request->input('category_id');
         $product->save();
 
@@ -180,12 +181,14 @@ public function updateProduct(Request $request, $id)
         $request->validate([
             'product_code' => 'required',
             'product_name' => 'required',
+            'product_description' => 'required',
             'category_id' => 'required',
         ]);
 
         // Update the product data
         $product->code = $request->input('product_code');
         $product->name = $request->input('product_name');
+        $product->description = $request->input('product_description');
         $product->product_category_id = $request->input('category_id');
         $product->save();
 

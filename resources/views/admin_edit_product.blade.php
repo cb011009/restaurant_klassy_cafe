@@ -18,11 +18,17 @@
             <label for="product_name">Product Name:</label>
             <input type="text" class="form-control" id="product_name" name="product_name" value="{{ $product->name }}" required>
         </div>
+        <!--Added description-->
+        <div class="form-group">
+            <label for="product_name">Product Description:</label>
+            <input type="text" class="form-control" id="product_description" name="product_description" value="{{ $product->description }}" required>
+        </div>
+        <!--Added description-->
         <div class="form-group">
             <label for="category_id">Category:</label>
             <select class="form-control" id="category_id" name="category_id" required>
                 @foreach($categories as $category)
-                    <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>{{ $category->category_name }}</option>
+                    <option value="{{ $category->id }}" {{ $product->product_category_id == $category->id ? 'selected' : '' }}>{{ $category->category_name }}</option>
                 @endforeach
             </select>
         </div>

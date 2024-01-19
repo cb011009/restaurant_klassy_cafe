@@ -34,6 +34,12 @@
                     <label for="product_name">Product Name:</label>
                     <input type="text" class="form-control" id="product_name" name="product_name" required>
                 </div>
+                <!--Added for product Description-->
+                <div class="form-group">
+                    <label for="product_name">Product Description:</label>
+                    <input type="text" class="form-control" id="product_description" name="product_description" required>
+                </div>
+                 <!--Added for product Description-->
                 <div class="form-group">
                     <label for="category_id">Category:</label>
                     <select class="form-control" id="category_id" name="category_id" required>

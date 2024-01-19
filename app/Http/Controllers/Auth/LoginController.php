@@ -45,6 +45,18 @@ class LoginController extends Controller
 
    protected function authenticated(Request $request, $user)
    {
+
+    // Create a token with the user's role in the payload
+    //$token = $user->createToken('auth_token', ['role' => $user->user_role])->plainTextToken;
+
+   // Create a token with the user's role in the payload
+   $token = $user->createToken('auth_token', ['role' => $user->user_role]);
+
+   // If you want to override the default expiration time for this token (e.g., 1 minute)
+   $token->accessToken->update(['expires_at' => now()->addMinutes(5)]);
+
+   
+
        if ($user->user_role === 'admin') {
            return redirect()->route('admin_panel'); // Redirect admin to admin dashboard
        } elseif ($user->user_role === 'waiter') {
@@ -55,6 +67,19 @@ class LoginController extends Controller
            return redirect()->route('reservation'); // Redirect customers to reservation page
        }
    }
+
+   public function logout()
+    {
+        $user = Auth::user();
+
+        // Revoke all of the user's tokens
+        $user->tokens()->delete();
+
+        // Perform the standard logout
+        Auth::logout();
+
+        return redirect('/'); // Redirect to your desired logout page
+    }
 
 
 

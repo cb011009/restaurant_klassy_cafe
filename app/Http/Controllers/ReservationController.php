@@ -16,17 +16,6 @@ class ReservationController extends Controller
     public function reservation()
     {
         
-
-        /*$userReservations = Reservation::where('user_id', Auth::id())->get();
-
-        return view('reservation', compact('userReservations'));*/
-
-       /* $userReservations = Reservation::where('user_id', Auth::id())
-            ->where('status', '!=', 'done')
-            ->get();
-
-        return view('reservation', compact('userReservations'));*/
-
         
         $userReservations = Reservation::where('user_id', Auth::id())
         ->where('dining_status', 'not_done')
