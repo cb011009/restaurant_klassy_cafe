@@ -109,7 +109,7 @@
             <tr>
                 <th>Product </th>
                 <th>Quantity</th>
-                <th>Allergies (optional)</th>
+                <th>Allergies/Preferences (optional)</th>
                 <th>Order Status</th>
             </tr>
         </thead>

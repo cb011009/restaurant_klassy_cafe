@@ -75,7 +75,7 @@
                             <!--Added Personal_profile_section-->
                             <form action="{{ route('visit_customer_food_profile', $reservation->id) }}" method="get">
                                 @csrf
-                                <button type="submit" class="btn btn-warning ml-2">Food Profile</button>
+                                <button type="submit" class="btn btn-warning ml-2">Profile</button>
                             </form>
                             <!--End of Add Personal Profile Section-->
                         </div>
