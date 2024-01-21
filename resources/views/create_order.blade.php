@@ -35,7 +35,7 @@
                 <tr>
                     <th>Product Code</th>
                     <th>Quantity</th>
-                    <th>Allergies (optional)</th>
+                    <th>Allergies/preferences (optional)</th>
                     <th>Action</th>
                 </tr>
             </thead>
