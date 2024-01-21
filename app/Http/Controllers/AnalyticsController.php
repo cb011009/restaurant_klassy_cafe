@@ -14,24 +14,9 @@ class AnalyticsController extends Controller
 {
    
 
-
+/*
 public function showAnalytics()
 {
-
-    /*$mostOrderedProducts = Order::select('product_code', \DB::raw('COUNT(*) as order_count'))
-        ->groupBy('product_code')
-        ->orderByRaw('order_count DESC')
-        ->limit(5)
-        ->get();*/
-
-    // Query to find the most ordered products with counts
-    /*$mostOrderedProducts = Order::select('products.code', 'products.product_category_id', \DB::raw('COUNT(*) as order_count'))
-        ->join('products', 'orders.product_code', '=', 'products.code')
-        ->groupBy('products.code', 'products.product_category_id')
-        ->orderByRaw('order_count DESC')
-        ->limit(5)
-        ->get();*/
-
         $mostOrderedProducts = Order::select(
             'products.code',
             'products.name as product_name',
@@ -47,18 +32,8 @@ public function showAnalytics()
     // Query to find all products
     $allProducts = Product::all();
 
-    
+    $categories = ProductCategory::all();
 
-   
-
-    /*// Query to find the time slots with the most reservations
-    $mostReservedTimeSlots = Reservation::select('time_slot')
-        ->groupBy('time_slot')
-        ->orderByRaw('COUNT(*) DESC')
-        ->limit(5)
-        ->get();*/
-
-        // Query to find the time slots with the most reservations and their counts
 $mostReservedTimeSlots = Reservation::select('time_slot', \DB::raw('COUNT(*) as reservation_count'))
 ->groupBy('time_slot')
 ->orderByRaw('reservation_count DESC')
@@ -70,10 +45,49 @@ $mostReservedTimeSlots = Reservation::select('time_slot', \DB::raw('COUNT(*) as 
     $unorderedProducts = Product::whereNotIn('code', $mostOrderedProducts->pluck('product_code')->toArray())
         ->get();
 
-    return view('admin_analytics', compact('mostOrderedProducts', 'allProducts', 'mostReservedTimeSlots', 'unorderedProducts'));
+    return view('admin_analytics', compact('mostOrderedProducts', 'allProducts', 'mostReservedTimeSlots', 'unorderedProducts', 'categories'));
 
    
+}*/
+
+public function showAnalytics(Request $request)
+{
+    $selectedCategory = $request->input('category');
+
+    $mostOrderedProductsQuery = Order::select(
+        'products.code',
+        'products.name as product_name',
+        'products.product_category_id',
+        \DB::raw('COUNT(*) as order_count')
+    )
+        ->join('products', 'orders.product_code', '=', 'products.code')
+        ->groupBy('products.code', 'products.product_category_id', 'products.name')
+        ->orderByRaw('order_count DESC');
+
+    // Apply category filter if a category is selected
+    if ($selectedCategory) {
+        $mostOrderedProductsQuery->where('products.product_category_id', $selectedCategory);
+    }
+
+    $mostOrderedProducts = $mostOrderedProductsQuery->limit(5)->get();
+    $allProducts = Product::all();
+    $categories = ProductCategory::all();
+
+    $mostReservedTimeSlots = Reservation::select('time_slot', \DB::raw('COUNT(*) as reservation_count'))
+        ->groupBy('time_slot')
+        ->orderByRaw('reservation_count DESC')
+        ->limit(5)
+        ->get();
+
+    //$unorderedProducts = Product::whereNotIn('code', $mostOrderedProducts->pluck('product_code')->toArray())
+        //->get();
+
+
+        
+
+    return view('admin_analytics', compact('mostOrderedProducts', 'allProducts', 'mostReservedTimeSlots', 'categories', 'selectedCategory'));
 }
+
 
  
 }
