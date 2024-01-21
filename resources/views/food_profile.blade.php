@@ -9,7 +9,7 @@
 <div class="container mt-5">
   
 
-    <h1>Food Profile of Customer: {{ $reservation->user->name }}</h1>
+    <h1>Profile of Customer: {{ $reservation->user->name }}</h1>
 
     
     <br>
