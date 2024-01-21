@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Sanctum\HasApiTokens;
 
 class RegisterController extends Controller
 {
@@ -29,7 +30,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/reservation';
 
     /**
      * Create a new controller instance.
@@ -87,6 +89,16 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'user_role' => 'user', // Set the default role for new users
         ]);
+
+        // Issue a token for the newly registered user
+    $token = $user->createToken('auth_token')->plainTextToken;
+
+    return $user;
+
+
+
+       
+      
     }
     
 }

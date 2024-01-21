@@ -9,7 +9,20 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">
+                    <span class="text-danger font-weight-bold mr-5">
+                        {{ __('Please register to proceed to Reservations') }}
+                    </span>
+                    @if (Route::has('login'))
+                        <span class="already-registered">
+                            {{ __('Already Registered?') }}
+                            <a href="{{ route('login') }}">{{ __('Please Login here') }}</a>
+                        </span>
+                    @endif
+                </div>
+                
+                
+                
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">

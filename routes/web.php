@@ -74,6 +74,7 @@ Route::middleware(['auth:sanctum', 'role_redirect:admin'])->group(function () {
 
 // Admin Dashboard Route
 Route::get('/admin_panel', [App\Http\Controllers\AdminController::class, 'manageUsers'])->name('admin_panel');
+Route::post('/admin/add-user', [App\Http\Controllers\AdminController::class, 'addUser'])->name('admin_add_user');
 
 // Edit User
 Route::get('/admin_edit_user/{id}', [App\Http\Controllers\AdminController::class, 'editUser'])->name('admin_edit_user');

@@ -1,23 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
- 
-    <div>
-        {{  $message }}
+@extends('layouts.app')
+
+@section('content')
+<br>
+<br>
+<br>
+<br>
+<br>
+
+    <div class="container mt-5">
+        <div class="alert alert-info" role="alert">
+            {{ $message }}
+        </div>
+
+        <form action="{{ route('chat') }}" method="POST" class="mt-3">
+            @csrf
+            <div class="input-group">
+                <input type="text" name="message" class="form-control" placeholder="Type your message" aria-label="Type your message" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit" id="button-addon2">Send</button>
+                </div>
+            </div>
+        </form>
     </div>
- 
-    <!--<form action="/" method="POST">-->
-    <form action="{{ route('chat') }}" method="POST">
-        @csrf
-        <input type="text" name="message">
-        <button type="submit">Send</button>
-    </form>
- 
-</body>
-</html>
+@endsection

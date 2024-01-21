@@ -53,7 +53,7 @@ class LoginController extends Controller
    $token = $user->createToken('auth_token', ['role' => $user->user_role]);
 
    // If you want to override the default expiration time for this token (e.g., 1 minute)
-   $token->accessToken->update(['expires_at' => now()->addMinutes(5)]);
+   $token->accessToken->update(['expires_at' => now()->addMinutes(15)]);
 
    
 

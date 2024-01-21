@@ -22,39 +22,6 @@ class OpenAIController extends Controller
         ]);
     }
  
-    
-    /*
-    public function getResponse(Request $request)
-{
-    $apiKey = config('services.openai.secret');
-
-
-    $prompt = 'Following is a dataset based on a restaurant called Klassy Cafe.
-
-    - Most ordered menu item during 8.30pm to 9.30pm -  Avacado and Salmon Sushi
-    - Most ordered menu item during 9.30pm to 10.30pm -  Teryaki chicken 
-    - Peak reservation time - 7.00pm to 9.00pm
-    - Managers name - Vipula
-    
-    Based on the information, answer the questions as a waiter.
-    
-    Q:'. $request->get('message');
-
-    $result = OpenAI::chat()->create([
-        'model' => 'gpt-3.5-turbo',
-        'messages' => [
-            [
-                'role' => 'user',
-                'content' => $prompt
-            ],
-        ],
-    ], ['headers' => ['Authorization' => 'Bearer ' . $apiKey]]);
-
-    return view('chat', [
-        'message' => $result->choices[0]->message->content
-    ]);
-}*/
-
 
 
 
