@@ -32,7 +32,7 @@ class ReservationController extends Controller
 
     public function storeReservation(Request $request)
 {
-    // Validate the form data
+   
     $request->validate([
             'number_of_guests' => 'required|integer',
             'date' => 'required',
@@ -103,31 +103,14 @@ class ReservationController extends Controller
 
 
     } else {
-        // Inform the user that no tables are available for booking at that time
-        // You can return an error message and suggest alternative options
+      
         return redirect()->route('reservation')
             ->with('error', 'Sorry, all tables are booked for this time slot on ' . $date . '. Please choose a different time or date.');
     }
 
 
-
-
-
-
-
-
-    
-    
-
-   
-
-    
 }
 
-//edit and cancel
-
-
-    
 
 public function cancelReservation($id)
 {
@@ -163,29 +146,6 @@ public function cancelReservation($id)
 }
 
 
-    /*public function cancelReservation($id)
-    {
-      
-    $reservation = Reservation::find($id);
-
-    
-    if (!$reservation) {
-        return redirect()->route('reservations')->with('error', 'Reservation not found.');
-    }
-
-    
-    if ($reservation->dining_status !== 'not_done') {
-        return redirect()->route('reservation')->with('error', 'Reservation cannot be cancelled.');
-    }
-
-   
-    $reservation->dining_status = 'cancelled';
-    
-    
-    $reservation->save();
-
-    return redirect()->route('reservation')->with('success', 'Reservation has been cancelled.');
-    }*/
 
 
 
@@ -199,53 +159,3 @@ public function cancelReservation($id)
 }
 
 
-
-//correct code 
-
-
-/*class ReservationController extends Controller
-{
-    public function reservation()
-    {
-        return view('reservation');
-    }
-
-    public function __construct()
-    {
-        $this->middleware('auth'); // Apply the 'auth' middleware to this controller
-    }
-
-    public function storeReservation(Request $request)
-    {
-        // Validate the form data (add validation rules as needed)
-        $request->validate([
-            
-            'number_of_guests' => 'required|integer',
-            'date' => 'required',
-            'time_slot' => 'required',
-            'occasion' => 'nullable|string',
-            'additional_info' => 'nullable|string',
-        ]);
-
-       
-
-        
-            
-            $reservation = new Reservation();
-            $reservation->user_id = Auth::user()->id; 
-            $reservation->number_of_guests = $request->input('number_of_guests');
-            $reservation->date = $request->input('date');
-            $reservation->time_slot = $request->input('time_slot');
-            $reservation->occasion = $request->input('occasion');
-            $reservation->additional_info = $request->input('additional_info');
-
-            try {
-                $reservation->save();
-            } catch (\Exception $e) {
-                dd($e->getMessage()); 
-            }
-
-          
-    }
-}
-*/

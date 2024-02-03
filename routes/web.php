@@ -142,3 +142,5 @@ Route::post('/chat', [OpenAIController::class, 'getResponse']);
 Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 
+
+

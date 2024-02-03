@@ -46,14 +46,13 @@ class LoginController extends Controller
    protected function authenticated(Request $request, $user)
    {
 
-    // Create a token with the user's role in the payload
-    //$token = $user->createToken('auth_token', ['role' => $user->user_role])->plainTextToken;
+   
 
-   // Create a token with the user's role in the payload
-   $token = $user->createToken('auth_token', ['role' => $user->user_role]);
+  
+    $token = $user->createToken('auth_token', ['role' => $user->user_role]);
+    $token->accessToken->update(['expires_at' => now()->addMinutes(30)]);
+    
 
-   // If you want to override the default expiration time for this token (e.g., 1 minute)
-   $token->accessToken->update(['expires_at' => now()->addMinutes(15)]);
 
    
 

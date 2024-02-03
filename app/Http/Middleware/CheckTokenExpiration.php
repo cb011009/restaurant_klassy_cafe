@@ -18,19 +18,7 @@ class CheckTokenExpiration
 
      public function handle($request, Closure $next)
     {
-        /*
-        $user = Auth::user();
-
-        // Check if the user has a valid token
-        if ($user && $user->tokens()->latest()->first() && $user->tokens()->latest()->first()->expires_at < now()) {
-            // Token has expired, revoke it and log the user out
-            $user->tokens()->latest()->first()->revoke();
-            Auth::logout();
-
-            return redirect('/login')->with('error', 'Your session has expired. Please log in again.');
-        }
-
-        return $next($request);*/
+       
 
 
         if (Auth::check()) {
@@ -56,6 +44,10 @@ class CheckTokenExpiration
 
         
     }
+
+
+    
+    
 
     
 }

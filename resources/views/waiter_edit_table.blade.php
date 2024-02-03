@@ -21,4 +21,5 @@
         <button type="submit" class="btn btn-primary">Update Table</button>
     </form>
 </div>
+
 @endsection
