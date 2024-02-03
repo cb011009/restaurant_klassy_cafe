@@ -57,13 +57,13 @@ https://templatemo.com/tm-558-klassy-cafe
                             <!-- ***** Menu Start ***** -->
                             <ul class="nav">
                                 <li class="scroll-to-section"><a href="/" class="active">Home</a></li>
-                                <li class="scroll-to-section"><a href="#about">About</a></li>
+                                <li class="scroll-to-section"><a href="/#about">About</a></li>
                                    
                                 <li ><a href="{{ route('chat') }}">Chat</a></li>
                                    
-                                <li class="scroll-to-section"><a href="#menu">Specials</a></li>
-                                <li class="scroll-to-section"><a href="#chefs">Cuisines</a></li> 
-                                <li class="scroll-to-section"><a href="#services">Contact Us</a></li> 
+                                <li class="scroll-to-section"><a href="/#menu">Specials</a></li>
+                                <li class="scroll-to-section"><a href="/#chefs">Cuisines</a></li> 
+                                <li class="scroll-to-section"><a href="/#services">Contact Us</a></li> 
                                 @guest
                                 @if (Route::has('login'))
                                     <li >
