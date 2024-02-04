@@ -228,7 +228,7 @@ public function updateProduct(Request $request, $id)
         // Update the product data
         $product->code = $request->input('product_code');
         $product->name = $request->input('product_name');
-        $product->description = $request->input('product_description');
+        //$product->description = $request->input('product_description');
         $product->product_category_id = $request->input('category_id');
         $product->save();
 
