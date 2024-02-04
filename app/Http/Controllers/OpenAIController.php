@@ -113,7 +113,7 @@ $prompt .= "\n  - A: Yes, we have happy hour between 7 pm and 8 pm where we offe
 
 
      // Add the remaining static information to the prompt
-    $prompt .= "\n- Managers name - Vipula";
+    $prompt .= "\n- Managers name - Dulanmi Himansa";
     $prompt .= "\n\nBased on the information, answer the questions as a waiter assisting a customer who has yet to visit your restaurant.\n\nQ:" . $request->get('message');
 
     // Make the API call to OpenAI
