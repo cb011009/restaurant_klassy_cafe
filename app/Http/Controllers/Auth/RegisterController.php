@@ -87,10 +87,10 @@ class RegisterController extends Controller
             'date_of_birth' => $data['date_of_birth'],
             'phone_number' => $data['phone_number'],
             'address' => $data['address'],
-            'user_role' => 'user', // Set the default role for new users
+            'user_role' => 'user', 
         ]);
 
-        // Issue a token for the newly registered user
+        
     $token = $user->createToken('auth_token')->plainTextToken;
 
     return $user;

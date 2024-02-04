@@ -31,7 +31,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 /* User Reservation Route
 Route::get('/reservation', [App\Http\Controllers\UserController::class, 'reservation'])->name('reservation');*/
-Route::middleware(['auth:sanctum', 'role_redirect:user'])->group(function () {
+Route::middleware(['auth', 'role_redirect:user'])->group(function () {
 
 Route::get('/reservation', [App\Http\Controllers\ReservationController::class, 'reservation'])->name('reservation');
 Route::post('/reservation', [App\Http\Controllers\ReservationController::class, 'storeReservation'])->name('reservation_store');
@@ -41,7 +41,7 @@ Route::post('/reservations/{id}', [App\Http\Controllers\ReservationController::c
 
 
 //newly added for staff roles
-Route::middleware(['auth:sanctum', 'role_redirect:waiter'])->group(function () {
+Route::middleware(['auth', 'role_redirect:waiter'])->group(function () {
 
 Route::get('/waiter_panel', [App\Http\Controllers\WaiterController::class, 'waiter_reservation_list'])->name('waiter_panel');
 Route::post('/waiter_panel', [App\Http\Controllers\WaiterController::class, 'filterReservations'])->name('waiter_filter');
@@ -57,7 +57,7 @@ Route::get('/visit_customer_food_profile/{reservation}', [App\Http\Controllers\W
 });
 
 
-Route::middleware(['auth:sanctum', 'role_redirect:chef'])->group(function () {
+Route::middleware(['auth', 'role_redirect:chef'])->group(function () {
 
 Route::get('/chef_panel', [App\Http\Controllers\ChefController::class, 'chef_panel'])->name('chef_panel');
 Route::patch('/chef_panel/{id}', [App\Http\Controllers\ChefController::class, 'markOrderDone'])->name('chef_mark_order_done');
@@ -70,7 +70,7 @@ Route::patch('/chef_panel/{id}', [App\Http\Controllers\ChefController::class, 'm
 //admin
 
 //Route::group(['middleware' => 'role:admin'], function () {
-Route::middleware(['auth:sanctum', 'role_redirect:admin'])->group(function () {
+Route::middleware(['auth', 'role_redirect:admin'])->group(function () {
 
 // Admin Dashboard Route
 Route::get('/admin_panel', [App\Http\Controllers\AdminController::class, 'manageUsers'])->name('admin_panel');
@@ -129,10 +129,6 @@ Route::get('/profile', function () {
 
 //open ai
 
-
-/*
-Route::get('/', [OpenAIController::class, 'index']);
-Route::post('/', [OpenAIController::class, 'getResponse']);*/
 
 Route::get('/chat', [OpenAIController::class, 'index'])->name('chat');
 Route::post('/chat', [OpenAIController::class, 'getResponse']);

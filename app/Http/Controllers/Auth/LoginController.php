@@ -34,14 +34,7 @@ class LoginController extends Controller
    
    
 
-   /*protected function authenticated(Request $request, $user)
-   {
-       if ($user->user_role === 'admin') {
-           return redirect()->route('admin_panel'); // Replace 'admin.dashboard' with your admin panel route name
-       } else {
-           return redirect()->route('reservation'); // Replace 'user.reservation' with your user route name
-       }
-   }*/
+   
 
    protected function authenticated(Request $request, $user)
    {
@@ -71,13 +64,13 @@ class LoginController extends Controller
     {
         $user = Auth::user();
 
-        // Revoke all of the user's tokens
+        
         $user->tokens()->delete();
 
-        // Perform the standard logout
+        
         Auth::logout();
 
-        return redirect('/'); // Redirect to your desired logout page
+        return redirect('/'); 
     }
 
 

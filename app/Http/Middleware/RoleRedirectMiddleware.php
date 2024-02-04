@@ -23,7 +23,7 @@ class RoleRedirectMiddleware
              return $next($request);
          }
  
-         // Redirect to a default page or show an unauthorized error
-         return redirect('/login'); // Adjust the redirection URL as needed
+         
+         return redirect('/login'); 
      }
 }

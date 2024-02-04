@@ -24,14 +24,14 @@ class CheckTokenExpiration
         if (Auth::check()) {
             $user = Auth::user();
 
-            // Check if the user has a valid token
+            
             $latestToken = $user->tokens()->latest()->first();
 
             if ($latestToken && $latestToken->expires_at < now()) {
-                // Token has expired, delete it
+                
                 $latestToken->delete();
 
-                // Log the user out
+               
                 Auth::guard('web')->logout();
 
                 return redirect('/login')->with('error', 'Your session has expired. Please log in again.');

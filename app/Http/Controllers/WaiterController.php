@@ -33,21 +33,22 @@ class WaiterController extends Controller
         return view('waiter_panel', compact('reservations', 'currentDate'));
     }
 
-
     public function filterReservations(Request $request)
-{
+    {
+        $selectedDate = $request->input('date');
+        $timeSlot = $request->input('time_slot');
     
-    $selectedDate = $request->input('date');
-    $timeSlot = $request->input('time_slot');
-
+        $reservations = Reservation::where('date', $selectedDate)
+            ->where('time_slot', $timeSlot)
+            ->get();
     
-    $reservations = Reservation::where('date', $selectedDate)
-        ->where('time_slot', $timeSlot)
-        ->get();
-
-   
-    return view('waiter_panel', compact('reservations', 'selectedDate'));
-}
+        $reservations = $reservations->filter(function ($reservation) {
+            return $reservation->dining_status === 'not_done';
+        });
+    
+        return view('waiter_panel', compact('reservations', 'selectedDate'));
+    }
+    
 
     
 

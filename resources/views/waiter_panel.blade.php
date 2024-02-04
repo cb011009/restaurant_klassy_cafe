@@ -41,6 +41,7 @@
         <thead>
             <tr>
                 <th>Table Number</th>
+                <th>Date & Time Slot</th>
                 <th>Name</th>
                 <th>Number of Guests</th>
                 <th>Occasion</th>
@@ -52,6 +53,8 @@
             @forelse($reservations as $reservation)
                 <tr>
                     <td>{{ $reservation->table_id}}</td>
+                    <td>{{ $reservation->date }} {{ $reservation->time_slot }}</td>
+                   
                     <td>{{ $reservation->user->name }}</td>
                     <td>{{ $reservation->number_of_guests }}</td>
                     <td>{{ $reservation->occasion }}</td>
