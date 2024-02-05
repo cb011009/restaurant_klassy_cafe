@@ -7,6 +7,19 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## About Klassy Cafe 
+
+The Klassy Café website was developed using Laravel framework with the objective to provide a personalized dining experience to our customers, using online reservation facilities and individually recording each customer’s dish preferences.
+
+•	The problem identified is that most restaurants do not address the personalized needs and requests of customers, which is not conducive to a satisfying dining experience. 
+
+•	The proposed solution is a web application which includes information about the restaurant and allows customer input by way of a message box which permits a client to advise the restaurant well in advance of the diverse preferences not usually catered to by most restaurants. 
+
+•	Furthermore, the application offers the restaurant to record orders per customer allowing for profile of users most ordered dishes as well most reserved days of the week.
+
+•	This enables the restaurant to prepare food for the guests, giving them a better dining experience.
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
